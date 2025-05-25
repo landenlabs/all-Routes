@@ -190,9 +190,10 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:21.3.0"
     implementation "androidx.work:work-runtime:2.10.1"   // https://developer.android.com/jetpack/androidx/releases/work
     implementation "androidx.sqlite:sqlite:2.5.1"       // https://developer.android.com/jetpack/androidx/releases/sqlite
-    implementation 'net.danlew:android.joda:2.13.1'    // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
+    implementation 'net.danlew:android.joda:2.13.1'
+    implementation project(path: ':lib_data')
+    // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
 
-    implementation project(path: ':wx_lib_data')
     // implementation "com.wsi.mapsdk:mapsdk:$versions.mapSdkV1"
     // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
     // implementation(name: 'mapsdk', ext: 'aar')

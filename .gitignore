@@ -1,35 +1,32 @@
-#secrets - DO NOT MODIFY THIS LINE
+# Private stuff
 twc_credentials*
 twc_key.properties
+*.jks
+
+# Local configuration file (sdk path, etc)
+local.properties
 
 # Built application files
 *.apk
 *.aab
 *.csh
 
-# Java class files
-*.class
-
-# Gradle files
+# Gradle and Android Studio tmp files
 .gradle/
 build/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Android Studio captures folder
-captures/
-
-# IntelliJ/Android Studio
-*.iml
 .idea/
-
+*.iml
+*.class
 
 # Ignore local maven repos
 maven_auto/
 maven_b2b/
+maven_repo/
+
+# Android Studio captures folder
+captures/
 
 tmp/
 dist/
-twc_release.jks
+
 
