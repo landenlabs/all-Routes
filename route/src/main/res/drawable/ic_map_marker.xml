@@ -1,0 +1,37 @@
+<!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="56dp"
+    android:height="56dp"
+    android:viewportWidth="56"
+    android:viewportHeight="56">
+    <path android:pathData="M53,28C53,41.807 41.807,53 28,53C14.193,53 3,41.807 3,28C3,14.193 14.193,3 28,3C41.807,3 53,14.193 53,28Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="28"
+                android:endY="53"
+                android:startX="28"
+                android:startY="2.905"
+                android:type="linear">
+                <item
+                    android:color="#FF1B4DE4"
+                    android:offset="0" />
+                <item
+                    android:color="#FF0A84FF"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#ffffff"
+        android:fillType="evenOdd"
+        android:pathData="M56,28C56,43.464 43.464,56 28,56C12.536,56 0,43.464 0,28C0,12.536 12.536,0 28,0C43.464,0 56,12.536 56,28ZM28,53C41.807,53 53,41.807 53,28C53,14.193 41.807,3 28,3C14.193,3 3,14.193 3,28C3,41.807 14.193,53 28,53Z" />
+    <path
+        android:fillColor="#ffffff"
+        android:fillType="evenOdd"
+        android:pathData="M27.361,11.333C34.378,11.333 40.063,17.163 40.063,24.338C40.063,31.581 32.732,39.426 29.213,43.745C28.212,44.974 26.517,44.974 25.517,43.745C21.988,39.426 14.667,31.359 14.667,24.338C14.667,17.163 20.351,11.333 27.361,11.333ZM27.365,18C24.177,18 21.593,20.487 21.593,23.556C21.593,26.624 24.177,29.111 27.365,29.111C30.553,29.111 33.137,26.624 33.137,23.556C33.137,20.487 30.553,18 27.365,18Z" />
+</vector>

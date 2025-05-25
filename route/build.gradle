@@ -1,0 +1,287 @@
+// all-routes, module route
+
+import org.gradle.internal.jvm.Jvm
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    // Add the dependency for the Google services Gradle plugin
+    // Parse google-services.json for accounts
+    id 'com.google.gms.google-services' version '4.4.2'
+    id 'com.google.firebase.crashlytics' version '3.0.2'
+    // https://firebase.google.com/docs/perf-mon/console?platform=android&authuser=0
+    id("com.google.firebase.firebase-perf") version "1.4.2"
+}
+
+java {
+    toolchain {
+        // https://developer.android.com/build/jdks#compileSdk
+        //  compileSDK 34,   Java 17
+        //  compileSDK 33,   Java 11
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+android {
+    apply from: "${project.rootDir}/dependencies.gradle"
+
+    namespace = "com.landenlabs.routes"
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        // Keep in sync with google-services.json
+        applicationId "com.landenlabs_dev.routes"
+        // applicationId "com.landenlabs.routes"
+
+        minSdk versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        versionCode versions.appVernCode
+        versionName versions.appVersion
+
+        // Limit languages to following list. Also look at 'resourceConfigurations'
+        resConfigs  resLangs
+
+        // Remove mips cpu, x86 required to run on emulator, x86 not needed for phones
+        ndk {
+            // abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters.clear()
+            abiFilters.addAll(cpuTypes)
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // Limit languages to following list. Also look at 'resourceConfigurations'
+        resourceConfigurations.clear()
+        resourceConfigurations.addAll(["en" ,"fr"])
+
+        ext.getDate = { ->
+            TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
+            def date = new Date()
+            def formattedDate = date.format('dd-MMM-yy')
+            println "formattedDate:" + formattedDate
+            return formattedDate
+        }
+
+        // Enable buildConfig and resValues in gradle.properties.
+        resValue "string", "routes_buildTimeMilli", String.valueOf(System.currentTimeMillis())
+        resValue "string", "routes_buildDate", ext.getDate()
+        resValue "string", "routes_targetSdkVersion", targetSdkVersion.apiString
+        resValue "string", "routes_compileSdkVersion", compileSdkVersion
+        resValue "string", "routes_appVersion", "v" + defaultConfig.versionName
+        resValue "string", "routes_javaVersion", Jvm.current().javaVersion.toString()
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    signingConfigs {
+        // Try and emulate our B2B app using similar credentials.
+        debug {
+            storeFile file(DEBUG_KEY_STORE_FILE)
+            storePassword DEBUG_KEY_STORE_PASSWORD
+            keyAlias DEBUG_KEY_STORE_ALIAS
+            keyPassword DEBUG_KEY_STOREY_PASSWORD
+        }
+
+        release {
+            // storeFile file(RELEASE_KEY_STORE_FILE)
+            // storePassword RELEASE_KEY_STORE_PASSWORD
+            // keyAlias RELEASE_KEY_STORE_ALIAS
+            // keyPassword RELEASE_KEY_STOREY_PASSWORD
+            storeFile file(releasekeyfile)
+            storePassword twc_sign_props.RELEASE_KEY_STORE_PASSWORD
+            keyAlias twc_sign_props.RELEASE_KEY_STORE_ALIAS
+            keyPassword twc_sign_props.RELEASE_KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            if (true) {
+                // Enables code shrinking, obfuscation, and optimization.
+                minifyEnabled true
+                // List of resources removed at end of generated mapping file:
+                // grep unused <project>/build/outputs/mapping/<appname>/resources.txt
+                shrinkResources true
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            } else {
+                // Keep all code for easier crash trace logs during development.
+                proguardFiles 'proguard-rules.pro'
+            }
+        }
+    }
+
+
+    // Doc on flavors https://www.androidauthority.com/building-multiple-flavors-android-app-706436/
+    flavorDimensions = ["devtype"]
+    productFlavors {
+        std {
+            isDefault true  // getIsDefault().set(true)
+            dimension "devtype"
+            versionNameSuffix = ""
+            applicationIdSuffix ""      // May have to update the firebase google-services.json file
+        }
+        /*
+        leak {
+            // Enable Leak Canary
+            dimension "devtype"
+            versionNameSuffix = "-leak"
+            applicationIdSuffix ".leak"
+        }
+         */
+    }
+
+    /*
+    compileOptions {
+        // Fails with version 21,  get error "class file has wrong version 65.0, should be 61.0"
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+     */
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions.unitTests.includeAndroidResources true
+
+    lintOptions {
+        // Do not need accessibility features enabled.
+        disable 'ContentDescription'
+    }
+
+    androidResources {
+        // Png and Jpg images are assumed to be using 'best' compression available.
+        // noCompress 'png', 'jpg'
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    if (rootProject.desugar) {  // Required with  Pangea 5+ and  gradle 8.2+
+        compileOptions {
+            // Flag to enable support for the new language APIs
+            coreLibraryDesugaringEnabled true
+        }
+    }
+}
+
+dependencies {
+    if (rootProject.desugar) { // Required with  Pangea 5+ and  gradle 8.2+
+        // https://developer.android.com/studio/write/java8-support.html
+        // For AGP 7.4+
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    }
+
+    implementation 'androidx.annotation:annotation:1.9.1'   // 1.6.0 causes Kotlin duplicate issues.
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.lifecycle:lifecycle-process:2.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'com.google.android.material:material:1.12.0'
+
+    implementation "com.google.android.gms:play-services-location:21.3.0"
+    implementation "androidx.work:work-runtime:2.10.1"   // https://developer.android.com/jetpack/androidx/releases/work
+    implementation "androidx.sqlite:sqlite:2.5.1"       // https://developer.android.com/jetpack/androidx/releases/sqlite
+    implementation 'net.danlew:android.joda:2.13.1'    // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
+
+    implementation project(path: ':wx_lib_data')
+    // implementation "com.wsi.mapsdk:mapsdk:$versions.mapSdkV1"
+    // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
+    // implementation(name: 'mapsdk', ext: 'aar')
+    // implementation files('libs/mapsdk.aar')
+    api(name: "mapsdk", ext: 'aar', version: "$versions.mapSdkV1",  group: 'mapsdk')
+    // Using Maven repo Pangea
+    api("com.weather.pangea.android:pangeamapbox:$versions.pangea4")
+
+    def navVer = "2.9.0"
+    implementation "androidx.navigation:navigation-fragment:$navVer"
+    implementation "androidx.navigation:navigation-ui:$navVer"
+
+    // https://firebase.google.com/docs/android/android-play-services?authuser=0&hl=en
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:33.14.0')
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-perf'
+    // implementation 'com.google.firebase:firebase-database'
+    // implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
+
+    // Build-in app update check
+    // https://developer.android.com/guide/playcore/in-app-updates/kotlin-java#java
+    implementation 'com.google.android.play:app-update:2.1.0'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:core:1.6.1'
+    testImplementation 'org.assertj:assertj-core:3.26.0'
+    testImplementation 'org.robolectric:robolectric:4.12.2'
+    testImplementation 'joda-time:joda-time:2.13.1'
+    testImplementation project(path: ':lib_gpx')
+
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation project(path: ':lib_gpx')
+
+    // https://square.github.io/leakcanary/getting_started/
+    // leakImplementation 'com.squareup.leakcanary:leakcanary-android:2.11'
+}
+
+// Rename app
+//  {project}-{flavor}-{buildType}.apk -> {parentProject}-{appType}-{versionNameSuffix}-{buildType}-{versionStr}.apk
+//  Ex:
+//           app-release.apk -> route-base-release-1.02.3456.apk
+//           app-release.aab -> route-base-release-1.4.27.aab
+android.applicationVariants.configureEach {
+    variant -> variant.outputs.configureEach {
+        def ourname = project.parent.name.replaceAll("_", "")
+        def appType = "base"  // base, auto, automotive, ...
+        def buildType = outputFileName.replaceAll(".*(debug|release).*", '$1')
+        def versionStr = versionName.replaceAll("-.*", "")
+        ext.flavorName = variant.name
+        def newNameRoot = "${ourname}-${appType}${variant.mergedFlavor.versionNameSuffix}-${buildType}-${versionStr}"
+        outputFileName = "${newNameRoot}.apk"
+
+        // sign{flavor}{buildType}Bundle
+        //   Ex: signAppDebugBundle
+        def bundleFinalizeTaskName = "sign${variant.name.capitalize()}Bundle"
+        tasks.named(bundleFinalizeTaskName) {
+            def file = finalBundleFile.asFile.get()
+            def finalFile = new File(file.parentFile, "${newNameRoot}.aab")
+            finalBundleFile.set(finalFile)
+        }
+    }
+}
+
+tasks.register('listFlavors') {
+    description = 'List Auto/Template flavors'
+    doLast {
+        println("--- Auto/Template Flavors ---")
+        /*
+        android.productFlavors.all {
+            flavor -> println("  " + flavor.name + "\t" + android.defaultConfig.applicationId + flavor.applicationIdSuffix)
+        }
+         */
+        printf("   %-20s %-20s %-40s   %s\n", "--Package--", "--Name--", "--Description/Flavor--", "--isMinified--")
+        project.android.applicationVariants.all { variant ->
+            // def applicationId = [variant.mergedFlavor.applicationId, variant.buildType.applicationIdSuffix].findAll().join()
+            printf("   %-20s %-20s %-40s   %b\n", variant.getApplicationId(), variant.name, variant.description, variant.buildType.isMinifyEnabled())
+        }
+    }
+}
+
+tasks.register('listrepos') {
+    description = 'List auto repositories'
+    doLast {
+        println "auto Repositories:"
+        project.repositories.each { printf("  %15s %s\n", it.name, it.url) }
+    }
+}

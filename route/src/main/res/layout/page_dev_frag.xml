@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
+    tools:context=".pages.PageSummaryFrag" >
+
+    <!-- See nav_tab.xml and menu_bar.xml -->
+    <tag
+        android:id="@id/page_dev"
+        android:value="Dev" />
+
+    <ImageView
+        android:id="@+id/page_backBtn"
+        style="@style/backArrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        app:layout_constraintBottom_toBottomOf="@+id/icon"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/text28"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:breakStrategy="balanced"
+        android:gravity="center"
+        android:text="Developer Info"
+        app:layout_constraintEnd_toStartOf="@+id/icon"
+        app:layout_constraintStart_toEndOf="@+id/page_backBtn"
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        app:layout_constraintBottom_toBottomOf="@+id/icon"
+        />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/icon56"
+        android:layout_height="@dimen/icon56"
+        android:layout_margin="20dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/top_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="page_backBtn, title, icon" />
+
+    <ScrollView
+        android:id="@+id/settings_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_divider"
+        tools:layout_height="400dp">
+
+        <LinearLayout
+            android:id="@+id/settings_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#888"
+            android:orientation="vertical"
+            android:padding="2dp"
+            tools:layout_height="400dp">
+            <!--
+            <include layout="@layout/card_grid_expander"  />
+            <include layout="@layout/card_wwir"  />
+            -->
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

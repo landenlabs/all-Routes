@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/nav_bar_height"
+    tools:context=".pages.PageRoutesFrag">
+
+    <!-- See nav_tab.xml and menu_bar.xml -->
+    <tag
+        android:id="@id/page_routes"
+        android:value="Routes" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/route_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335"
+        android:padding="10dp"
+        app:constraint_referenced_ids="route_show_map, route_show_trips, route_show_dow, route_status"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_verticalBias="0"
+        app:flow_wrapMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckedTextView
+        android:id="@+id/route_show_map"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkMark="@drawable/checkpath_anim_on"
+        android:checked="true"
+        android:gravity="left|center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/routes_toggle_map"
+        android:textColor="@android:color/white" />
+    <CheckedTextView
+        android:id="@+id/route_show_trips"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkMark="@drawable/checkpath_anim_on"
+        android:checked="false"
+        android:gravity="left|center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/routes_toggle_trips"
+        android:textColor="@android:color/white" />
+
+    <CheckedTextView
+        android:id="@+id/route_show_dow"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkMark="@drawable/checkpath_anim_on"
+        android:checked="false"
+        android:gravity="left|center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/routes_toggle_dow"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/route_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#123"
+        style="@style/text18"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/route_list"
+        android:padding="5dp"
+        android:background="#ccc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/route_controls"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_list"
+        />
+
+    <TextView
+        android:id="@+id/route_no_routes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="No Routes Recorded\nUse Record Page\nto add new routes."
+        android:gravity="center"
+        style="@style/text20"
+        android:textColor="@color/black1"
+        app:layout_constraintStart_toStartOf="@+id/route_list"
+        app:layout_constraintEnd_toEndOf="@+id/route_list"
+        app:layout_constraintTop_toTopOf="@+id/route_list"
+        app:layout_constraintBottom_toBottomOf="@+id/route_list"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottom_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="map_viewer, rte_delete_grp"
+        app:barrierDirection="top"
+        />
+
+    <com.landenlabs.routes.map.MapViewer
+        android:background="@drawable/bg_rect_border"
+        android:id="@+id/map_viewer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:tag="map_routes"
+        />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/rte_delete_grp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335"
+        android:padding="10dp"
+        app:constraint_referenced_ids="
+        rte_delete,
+        rte_del_select_all,
+        rte_del_select_none,
+        rte_del_toggle_show"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_verticalBias="0"
+        app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:background="@drawable/bg_round_border"
+        android:id="@+id/rte_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/rte_delete"
+        style="@style/text20"
+        />
+
+    <TextView
+        android:background="@drawable/bg_round_border"
+        android:id="@+id/rte_del_select_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/rte_del_select_all"
+        style="@style/text20"
+        />
+
+    <TextView
+        android:background="@drawable/bg_round_border"
+        android:id="@+id/rte_del_select_none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/rte_del_select_none"
+        style="@style/text20"
+        />
+
+    <CheckedTextView
+        android:id="@+id/rte_del_toggle_show"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_border"
+        android:checkMark="@drawable/checkpath_anim_on"
+        android:checked="false"
+        android:gravity="left|center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/rte_del_toggle_show"
+        android:textColor="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

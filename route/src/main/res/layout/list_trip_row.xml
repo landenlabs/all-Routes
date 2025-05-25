@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:background="#488"
+    android:elevation="10dp"
+    android:padding="10dp"
+    android:tag="list_trip_row">
+
+    <CheckBox
+        android:id="@+id/selected"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="0dp"
+        android:background="#8111"
+        android:button="@drawable/checkpath_anim_on"
+        android:padding="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/expand"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="#8111"
+        android:button="@drawable/checkpath_anim_expand"
+        android:src="@drawable/ic_collapse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:padding="1dp"
+        tools:text="--Map card--"
+        app:layout_constraintEnd_toStartOf="@+id/expand"
+        app:layout_constraintStart_toEndOf="@+id/selected"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/row_items"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:constraint_referenced_ids="date, distance, duration, speed, count, tracks"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <TextView
+        android:id="@+id/date"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12-Jan-23 11:22 am"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/distance"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12.34 miles" />
+
+    <TextView
+        android:id="@+id/duration"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12:34" />
+
+    <TextView
+        android:id="@+id/speed"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="45.6 mph" />
+
+    <TextView
+        android:id="@+id/count"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="#Pts: 123" />
+
+    <TextView
+        android:id="@+id/tracks"
+        style="@style/text18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Tracks: 123" />
+
+    <LinearLayout
+        android:id="@+id/row_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/row_items" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

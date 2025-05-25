@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Testing Mock GPS -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="ProtectedPermissions" />
+
+    <!--  tools:node="replace" -->
+    <application>
+        <!--
+        https://firebase.google.com/docs/perf-mon/get-started-android?authuser=0#view-log-messages
+        adb logcat -s FirebasePerformance
+        -->
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
+
+    </application>
+</manifest>

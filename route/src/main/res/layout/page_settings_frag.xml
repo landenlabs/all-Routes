@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
+    tools:context=".pages.PageSettingsFrag">
+
+    <!-- See nav_tab.xml and menu_bar.xml -->
+    <tag
+        android:id="@id/page_settings"
+        android:value="Settings" />
+
+    <ImageView
+        android:id="@+id/page_backBtn"
+        style="@style/backArrow"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/text30"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:breakStrategy="balanced"
+        android:gravity="center"
+        android:text="Route Settings"
+        app:layout_constraintEnd_toStartOf="@+id/icon"
+        app:layout_constraintStart_toEndOf="@+id/page_backBtn"
+        app:layout_constraintTop_toTopOf="@+id/icon" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/icon56"
+        android:layout_height="@dimen/icon56"
+        android:layout_margin="20dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/top_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="page_backBtn, title, icon" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/set_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c335"
+        android:padding="10dp"
+        app:constraint_referenced_ids="
+        lbl_gps_rate, set_gps_rate_sec,
+        lbl_save_rate, set_save_rate_sec,
+        lbl_gps_min, set_gps_min_meters,
+        lbl_min_bnds, set_min_bnds,
+        lbl_units, set_units_english,
+        lbl_track_clr, set_track_color,
+        lbl_test_clr, set_test_color,
+        lbl_rev_clr, set_rev_color"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalBias="0"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_divider"
+        />
+
+    <TextView
+        android:id="@+id/lbl_gps_rate"
+        style="@style/set_label"
+        android:text="GPS Rate(sec):" />
+    <EditText
+        android:id="@+id/set_gps_rate_sec"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:padding="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/lbl_save_rate"
+        style="@style/set_label"
+        android:text="Save Rate(sec):" />
+    <EditText
+        android:id="@+id/set_save_rate_sec"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:padding="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="5" />
+
+    <TextView
+        android:id="@+id/lbl_gps_min"
+        style="@style/set_label"
+        android:text="Min Dst (m):" />
+    <EditText
+        android:id="@+id/set_gps_min_meters"
+        style="@style/text20"
+        android:padding="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="10" />
+
+    <TextView
+        android:id="@+id/lbl_min_bnds"
+        style="@style/set_label"
+        android:text="Min Bounds (deg):" />
+    <EditText
+        android:id="@+id/set_min_bnds"
+        style="@style/text20"
+        android:padding="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="10" />
+
+    <TextView
+        android:id="@+id/lbl_units"
+        style="@style/set_label"
+        android:text="English Units:" />
+    <ToggleButton
+        android:id="@+id/set_units_english"
+        style="@style/text20"
+        android:padding="0dp"
+        android:layout_width="0dp"
+        android:checked="true"
+        android:background="#4000"
+        android:layout_height="wrap_content"
+        android:textOn="English"
+        android:textOff="Metric"
+          />
+
+    <TextView
+        android:id="@+id/lbl_track_clr"
+        style="@style/set_label"
+        android:text="Track Color:" />
+    <ImageView
+        android:id="@+id/set_track_color"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:src="@drawable/bg_circle2"
+        android:scaleType="fitXY"
+        android:background="@drawable/dbg_squares10"
+        app:tint="#8f00" />
+
+
+    <TextView
+        android:id="@+id/lbl_test_clr"
+        style="@style/set_label"
+        android:text="Test Color:" />
+
+    <ImageView
+        android:id="@+id/set_test_color"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:src="@drawable/bg_circle2"
+        android:scaleType="fitXY"
+        android:background="@drawable/dbg_squares10"
+        app:tint="#8f00"
+        />
+
+    <TextView
+        android:id="@+id/lbl_rev_clr"
+        style="@style/set_label"
+        android:text="Rev Color:" />
+    <ImageView
+        android:id="@+id/set_rev_color"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:src="@drawable/bg_circle2"
+        android:scaleType="fitXY"
+        android:background="@drawable/dbg_squares10"
+        app:tint="#8f0f"
+        />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/set_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:constraint_referenced_ids="set_apply, set_cancel"
+        app:flow_horizontalBias="0"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalBias="0"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_controls"
+        />
+    <TextView
+        android:id="@+id/set_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text20"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/bg_round_border"
+        android:text="Apply" />
+    <TextView
+        android:id="@+id/set_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text20"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/bg_round_border"
+        android:text="Cancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

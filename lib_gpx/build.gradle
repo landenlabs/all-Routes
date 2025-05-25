@@ -1,0 +1,42 @@
+// Clone of android-gpx-parser
+// Source:  github.com/ticofab/android-gpx-parser/tree/master
+// License: Apache github.com/ticofab/android-gpx-parser/blob/master/LICENSE
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    apply from: "${project.rootDir}/dependencies.gradle"
+    namespace 'com.landenlabs.gpx_lib'
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        // minSdk 28
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /*
+    compileOptions {
+        // Fails with version 21,  get error "class file has wrong version 65.0, should be 61.0"
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+     */
+}
+
+dependencies {
+    api 'net.danlew:android.joda:2.13.1'
+    // testImplementation 'junit:junit:4.13.2'
+    // androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/picker_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:choiceMode="singleChoice"
+
+    android:divider="@null"
+    android:dividerHeight="0dp"
+
+    android:horizontalSpacing="2dp"
+    android:verticalSpacing="1dp"
+
+    android:columnWidth="190dp"
+    android:gravity="center"
+    android:numColumns="auto_fit"
+
+    android:orientation="horizontal"
+
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbars="horizontal"
+
+    android:stretchMode="none"
+
+    />
+<!--
+    android:stretchMode="none"
+
+-->

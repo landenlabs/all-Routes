@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_panel_3d">
+
+    <!-- SmartAlert = sa -->
+    <TextView
+        android:id="@+id/sa_title"
+        style="@style/text24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:text="[0] Andover MA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/sa_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335"
+        android:padding="10dp"
+        app:constraint_referenced_ids="
+            sa_dist_lbl, sa_dist_val,
+            sa_width_lbl, sa_width_val,
+            sa_hour_lbl, sa_hour_val,
+            sa_time_lbl, sa_time_val,
+            sa_ddi_lbl, sa_ddi_val,
+            sa_alert_lbl, sa_alert_val,
+            sa_rate_lbl, sa_rate_val,
+            sa_temp_lbl, sa_temp_val,
+            sa_wind_lbl, sa_wind_val"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_horizontalGap="20dp"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalBias="0"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toTopOf="@id/sa_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sa_title"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/sa_dist_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Miles:" />
+
+    <TextView
+        android:id="@+id/sa_dist_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="123.4 mi" />
+
+    <TextView
+        android:id="@+id/sa_width_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Width:" />
+
+    <TextView
+        android:id="@+id/sa_width_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="123.4 mi" />
+
+    <TextView
+        android:id="@+id/sa_hour_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Hours:" />
+
+    <TextView
+        android:id="@+id/sa_hour_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="+12.3 hr" />
+
+    <TextView
+        android:id="@+id/sa_time_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Time:" />
+
+    <TextView
+        android:id="@+id/sa_time_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="12:30pm" />
+
+    <TextView
+        android:id="@+id/sa_ddi_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="DDI:" />
+
+    <TextView
+        android:id="@+id/sa_ddi_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0-none\n12:34 pm" />
+
+    <TextView
+        android:id="@+id/sa_alert_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Alert:" />
+
+    <TextView
+        android:id="@+id/sa_alert_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="SV TO\nTill 12:34 pm" />
+
+    <TextView
+        android:id="@+id/sa_rate_lbl"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Rain:" />
+
+    <TextView
+        android:id="@+id/sa_rate_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="12.3 in/hr" />
+
+    <TextView
+        android:id="@+id/sa_temp_lbl"
+        style="@style/text18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Temperature:" />
+
+    <TextView
+        android:id="@+id/sa_temp_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="12.3°" />
+
+    <TextView
+        android:id="@+id/sa_wind_lbl"
+        style="@style/text18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Wind mph:" />
+
+    <TextView
+        android:id="@+id/sa_wind_val"
+        style="@style/text20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="12.3 mph" />
+
+    <TextView
+        android:id="@+id/sa_close"
+        style="@style/text24"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_btn_selector"
+        android:backgroundTint="#cff0"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:text="Close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sa_table" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+<resources>
+    <color name="grey900">#ff202124</color>
+    <color name="grey700">#ff5f6368</color>
+
+    <color name="black1">#D6000000</color>
+    <color name="black3">#99000000</color>
+
+    <color name="white1">#FFffffff</color>
+    <color name="white2">#B7ffffff</color>
+    <color name="white3">#8effffff</color>
+    <color name="white4">#75ffffff</color>
+    <color name="white5">#33ffffff</color>
+    <color name="white6">#14FFFFFF</color>
+
+    <color name="divider">#3Dffffff</color>
+</resources>

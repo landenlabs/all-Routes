@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Nest shape in layer-list to add padding -->
+
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="2dp"
+                android:color="@color/black3" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="@dimen/panel_edge_width"
+        android:left="@dimen/panel_edge_width"
+        android:right="@dimen/panel_edge_width"
+        android:top="@dimen/panel_edge_width">
+        <shape android:shape="rectangle">
+            <solid android:color="#fff" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+
+</layer-list>

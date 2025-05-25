@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/checkpath_on"
+        android:drawable="@drawable/ic_expand"
+        android:state_checked="true" />
+
+    <item
+        android:id="@+id/checkpath_sel"
+        android:drawable="@drawable/checkpath_blank"
+        android:state_selected="true" />
+
+    <item
+        android:id="@+id/checkpath_off"
+        android:drawable="@drawable/ic_collapse" />
+
+<!--
+    <transition
+        android:drawable="@drawable/checkpath_blank_to_on_avd"
+        android:fromId="@id/checkpath_off"
+        android:toId="@id/checkpath_on" />
+
+    <transition
+        android:drawable="@drawable/checkpath_blank_to_on_avd"
+        android:fromId="@id/checkpath_off"
+        android:toId="@id/checkpath_sel" />
+
+    <transition
+        android:drawable="@drawable/checkpath_to_off_avd"
+        android:fromId="@id/checkpath_on"
+        android:toId="@id/checkpath_off" />
+
+    <transition
+        android:drawable="@drawable/checkpath_to_off_avd"
+        android:fromId="@id/checkpath_sel"
+        android:toId="@id/checkpath_off" />
+-->
+</animated-selector>

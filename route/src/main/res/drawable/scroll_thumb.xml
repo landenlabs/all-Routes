@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="1dp"
+        android:left="10dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+
+            <!--
+            <solid android:color="@color/white5" />
+            -->
+            <solid android:color="#999999" />
+            <!--
+            <gradient
+                android:angle="0"
+                android:centerColor="@color/white4"
+                android:endColor="@color/white3"
+                android:startColor="@color/white1" />
+                -->
+        </shape>
+    </item>
+</layer-list>

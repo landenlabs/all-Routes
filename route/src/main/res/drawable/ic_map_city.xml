@@ -1,0 +1,15 @@
+<!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/icon_white"
+        android:fillType="evenOdd"
+        android:pathData="M11.616,2C15.827,2 19.237,5.498 19.238,9.803C19.238,14.149 14.839,18.856 12.728,21.447C12.127,22.184 11.11,22.184 10.51,21.447C8.393,18.856 4,14.016 4,9.803C4,5.498 7.411,2 11.616,2ZM11.619,6C9.706,6 8.156,7.492 8.156,9.333C8.156,11.174 9.706,12.667 11.619,12.667C13.532,12.667 15.082,11.174 15.082,9.333C15.082,7.492 13.532,6 11.619,6Z" />
+</vector>

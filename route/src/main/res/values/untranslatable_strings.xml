@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<resources>
+    <!-- Untranslatable string identifiers -->
+    <string name="crash_dlg_crash_cont_btn" translatable="false">Continue</string>
+    <string name="crash_dlg_crash_email_btn" translatable="false">Email</string>
+</resources>

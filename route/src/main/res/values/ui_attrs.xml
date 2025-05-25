@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+
+
+    <attr name="gravityItems">
+        <flag name="bottom" value="80" />
+        <flag name="center" value="17" />
+        <flag name="center_horizontal" value="1" />
+        <flag name="center_vertical" value="16" />
+        <flag name="clip_horizontal" value="8" />
+        <flag name="clip_vertical" value="128" />
+        <flag name="end" value="8388613" />
+        <flag name="fill" value="119" />
+        <flag name="fill_horizontal" value="7" />
+        <flag name="fill_vertical" value="112" />
+        <flag name="left" value="3" />
+        <flag name="right" value="5" />
+        <flag name="start" value="8388611" />
+        <flag name="top" value="48" />
+    </attr>
+
+    <attr name="widthItems" format="dimension">
+        <enum name="fill_parent" value="-1" />
+        <enum name="match_parent" value="-1" />
+        <enum name="wrap_content" value="-2" />
+    </attr>
+
+    <attr name="wheel" format="boolean" />
+    <attr name="visibleItems" format="integer" />
+
+    <declare-styleable name="Picker1">
+        <attr name="android:entries" />
+        <attr name="android:gravity" />
+        <attr name="wheel" />
+        <attr name="gravityItems" />
+        <attr name="visibleItems" />
+        <attr name="widthItems" />
+    </declare-styleable>
+
+    <declare-styleable name="Picker2">
+        <attr name="android:entries" />
+        <attr name="android:gravity" />
+        <attr name="wheel" />
+        <attr name="gravityItems" />
+        <attr name="visibleItems" />
+        <attr name="widthItems" />
+    </declare-styleable>
+
+    <!-- Picker2 -->
+    <dimen name="picker_height">75dp</dimen>
+    <dimen name="picker_row_height">25dp</dimen>
+</resources>

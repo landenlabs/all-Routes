@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/bg_map"
+    android:tileMode="repeat" />

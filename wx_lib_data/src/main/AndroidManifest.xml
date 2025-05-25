@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- GPS access -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Network connection/state monitor -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- UtilSys.vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Get ip Address -->
+    <uses-permission  android:name="android.permission.ACCESS_WIFI_STATE"/>
+</manifest>

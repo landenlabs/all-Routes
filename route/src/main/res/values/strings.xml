@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Routes</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Route Recorder</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_summary">Summary</string>
+    <string name="menu_routes">Routes</string>
+    <string name="menu_recorder">Recorder</string>
+    <string name="menu_weather">Wx/Alerts</string>
+    <string name="menu_dev">Dev</string>
+
+
+    <string name="menu_settings">Settings</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_map">Map</string>
+    <string name="menu_trips">Trips</string>
+    <string name="menu_sort">Sort</string>
+    <string name="menu_sortByDOW">DayOfWeek</string>
+    <string name="menu_sortByHour">Hour</string>
+    <string name="menu_sortByStart">Start</string>
+    <string name="menu_sortByTrip">Trip</string>
+    <string name="menu_sortByLength">Length</string>
+    <string name="menu_sortByPoints">Points</string>
+
+    <string name="noGeoCodeResult">No geocode result</string>
+
+    <string name="notification_title">Route Recorder</string>
+    <string name="ticker_text">Ticker 123</string>
+    <string name="speed_parked">Parked</string>
+
+    <string name="routes_fmt">%d</string>
+    <string name="nav_state">State</string>
+    <string name="nav_routes">Routes</string>
+    <string name="nav_rec">Rec</string>
+    <string name="nav_dev">Dev</string>
+    <string name="nav_wx">Wx</string>
+
+    <!-- Route List -->
+    <string name="tracks_fmt">Tracks: %d</string>
+    <string name="count_fmt">#Pts: %d</string>
+    <string name="distance_fmt">Miles: %.1f</string>
+    <string name="duration_lbl">"Duration: "</string>
+    <string name="speed_fmt">%.2f mph</string>
+
+    <string name="open">Open</string>
+    <string name="cancel">Cancel</string>
+    <string name="stop">Stop</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+
+    <string name="map_style_url">mapbox://styles/weather/claa2v3lw000t14p5c28rwkia</string>
+    <string name="rte_delete">"Delete Selected %1$d"</string>
+    <string name="permission">Permission</string>
+    <string name="gps">GPS</string>
+    <string name="network">Network</string>
+    <string name="sum_speed">Speed:</string>
+    <string name="sum_location">Location:</string>
+    <string name="sum_routes">Routes:</string>
+    <string name="routes_toggle_map">Map</string>
+    <string name="routes_toggle_trips">Trips</string>
+    <string name="routes_toggle_dow">DOW</string>
+    <string name="rte_del_select_all">Select All</string>
+    <string name="rte_del_select_none">Select None</string>
+    <string name="rte_del_toggle_show">Show Selected</string>
+    <string name="rec_status">Duration:</string>
+    <string name="sum_recording">Recording:</string>
+    <string name="sum_time_gps">Age GPS:</string>
+    <string name="sum_time">Time:</string>
+    <string name="wx_pick_btn">Pick</string>
+    <string name="wx_clear_btn">Clear</string>
+
+    <string-array name="gps_rates" translatable="false">
+        <item>10 sec</item>
+        <item>30 sec</item>
+        <item>1 min</item>
+        <item>2 min</item>
+        <item>5 min</item>
+        <item>10 min</item>
+    </string-array>
+</resources>

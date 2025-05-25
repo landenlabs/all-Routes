@@ -1,0 +1,209 @@
+<!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="font_default">
+        <item name="android:textColor">@color/white1</item>
+        <item name="android:textFontWeight" tools:targetApi="28">400</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="text72" parent="font_default">
+        <item name="android:textSize">72dp</item>
+    </style>
+
+    <style name="text56" parent="font_default">
+        <item name="android:textSize">56dp</item>
+    </style>
+
+    <style name="text44" parent="font_default">
+        <item name="android:textSize">44dp</item>
+    </style>
+
+    <style name="text36" parent="font_default">
+        <item name="android:textSize">36dp</item>
+    </style>
+
+    <style name="text32" parent="font_default">
+        <item name="android:textSize">32dp</item>
+    </style>
+
+    <style name="text30" parent="font_default">
+        <item name="android:textSize">30dp</item>
+    </style>
+
+    <style name="text28" parent="font_default">
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="text24white3" parent="text24">
+        <item name="android:textColor">@color/white3</item>
+    </style>
+
+    <style name="text24" parent="font_default">
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <!--
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:iconTint">@null</item>
+    -->
+    <style name="btn20" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textSize">20dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:paddingVertical">5dp</item>
+    </style>
+
+    <style name="text20" parent="font_default">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="text18" parent="font_default">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="set_label" parent="text20">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+
+
+    <!--
+        <item name="android:checkMark">@drawable/checkpath_anim_on</item>
+        <item name="android:gravity">end|center_vertical</item>
+    -->
+    <style name="routeCb" parent="@style/text18" >
+        <item name="android:checkMark">@null</item>
+        <item name="android:drawableLeft">@drawable/checkpath_anim_on</item>
+        <item name="android:checked">false</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+
+    <style name="textTblLbl" parent="text24">
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/black1</item>
+    </style>
+    <style name="textTblVal" parent="text20">
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@color/black1</item>
+    </style>
+
+    <style name="weblook">
+        <item name="android:background">@color/black1</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginEnd">@dimen/scroll_margin</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+    <style name="web_scroll_none" parent="weblook">
+        <item name="android:scrollIndicators">none</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+    <style name="web_scroll_left" parent="weblook">
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollIndicators">start</item>
+        <item name="android:verticalScrollbarPosition">left</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarFadeDuration">999999</item>
+        <item name="android:scrollbarSize">20dp</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/bg_track</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="backArrow">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:src">@drawable/ic_left</item>
+        <item name="android:background">@drawable/bg_ripple_view_bounds</item>
+    </style>
+
+    <style name="text20Settings" parent="text20">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">#088</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingVertical">0dp</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">#333</item>
+    </style>
+
+    <!-- Added in code for both Label and Value
+     <item name="android:layout_width">0dp</item>
+     <item name="android:layout_gravity">fill</item>
+     <item name="android:layout_columnWeight">1</item>
+    -->
+    <style name="text20SettingsLabel" parent="text20">
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:gravity">end</item>
+    </style>
+    <style name="text20SettingsValue" parent="text20">
+        <item name="android:textColor">#FFF</item>
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="text24Settings" parent="text24">
+        <item name="android:textColor">#FFF</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name="ScrollTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/white1</item>
+    </style>
+    <style name="ScrollTabStyle" parent="Widget.Design.TabLayout">
+        <item name="android:textSize">14dp</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabTextAppearance">@style/ScrollTabTextAppearance</item>
+    </style>
+
+    <style name="RadioTab" parent="@android:style/Widget.Material.Light.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/ripple_boarderless</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/tab_colors</item>
+    </style>
+
+    <style name="notifyStyle1">
+        <item name="android:padding">32dp</item>
+        <item name="android:background">#ddd</item>
+        <!--
+         <item name="android:padding">@dimen/card_padding</item>
+         <item name="android:background">@drawable/bg_panel_3d</item>
+         -->
+    </style>
+
+    <style name="menu_style" parent="text24" >
+    </style>
+</resources>

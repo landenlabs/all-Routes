@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
+    tools:context=".pages.PageSummaryFrag">
+
+    <!-- See nav_tab.xml and menu_bar.xml -->
+    <tag
+        android:id="@id/page_summary"
+        android:value="Summary" />
+
+
+    <ImageView
+        android:id="@+id/sum_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha=".6"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_map_tile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/sum_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_height="400dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sum_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:layout_height="400dp">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/sum_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:constraint_referenced_ids="sum_perm, sum_gps, sum_network"
+                app:flow_horizontalAlign="start"
+                app:flow_wrapMode="chain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckedTextView
+                android:id="@+id/sum_perm"
+                style="@style/text18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_border"
+                android:checkMark="@drawable/checkpath_anim_sel"
+                android:checked="true"
+                android:gravity="left|center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/permission"
+                android:textColor="@android:color/white" />
+
+            <CheckedTextView
+                android:id="@+id/sum_gps"
+                style="@style/text18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_border"
+                android:checkMark="@drawable/checkpath_anim_sel"
+                android:checked="true"
+                android:gravity="left|center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/gps"
+                android:textColor="@android:color/white" />
+
+            <CheckedTextView
+                android:id="@+id/sum_network"
+                style="@style/text18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_border"
+                android:checkMark="@drawable/checkpath_anim_sel"
+                android:checked="true"
+                android:gravity="left|center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/network"
+                android:textColor="@android:color/white" />
+
+
+            <TableLayout
+                app:layout_constraintWidth_min="300dp"
+                android:id="@+id/sum_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_round_border3"
+                android:columnCount="2"
+                android:divider="@drawable/div_horz"
+                android:padding="10dp"
+                android:showDividers="middle|end"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sum_state">
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_time" />
+
+                    <TextView
+                        android:id="@+id/sum_time"
+                        style="@style/textTblVal"
+                        tools:text="Mon 12:11 am"  />
+                </TableRow>
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_time_gps" />
+
+                    <TextView
+                        android:id="@+id/sum_time_gps"
+                        style="@style/textTblVal"
+                        tools:text="Mon 12:11 am"  />
+                </TableRow>
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_speed" />
+
+                    <TextView
+                        android:id="@+id/sum_speed"
+                        style="@style/textTblVal"
+                        tools:text="50 mph"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_location" />
+
+                    <TextView
+                        android:id="@+id/sum_loc"
+                        style="@style/textTblVal"
+                        tools:text="12.34, -123.45"  />
+                </TableRow>
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_routes" />
+
+                    <TextView
+                        android:id="@+id/sum_routes"
+                        style="@style/textTblVal"
+                        tools:text="123"  />
+                </TableRow>
+
+                <TableRow
+                    android:baselineAligned="false"
+                    android:divider="@drawable/div_vert"
+                    android:showDividers="middle">
+
+                    <TextView
+                        style="@style/textTblLbl"
+                        android:text="@string/sum_recording" />
+
+                    <TextView
+                        android:id="@+id/sum_rec_num"
+                        style="@style/textTblVal"
+                        tools:text="123"  />
+                </TableRow>
+
+            </TableLayout>
+            <!--
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/sum_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:constraint_referenced_ids="sum_speed, sum_loc, sum_routes"
+                app:flow_horizontalAlign="start"
+                app:flow_wrapMode="chain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sum_state" />
+
+            <TextView
+                android:id="@+id/sum_speed"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rect_border"
+                android:text="Speed: xx mph"
+                style="@style/text18"
+                />
+            <TextView
+                android:id="@+id/sum_loc"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rect_border"
+                android:text="12.34, -123.45"
+                style="@style/text18"
+                />
+            <TextView
+                android:id="@+id/sum_routes"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rect_border"
+                android:text="Routes: xx"
+                style="@style/text18"
+                />
+
+-->
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/sum_debug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:constraint_referenced_ids="dbg_add_tracks, dbg_clear_tracks"
+                app:flow_horizontalAlign="start"
+                app:flow_wrapMode="chain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sum_status" />
+
+            <TextView
+                android:id="@+id/dbg_add_tracks"
+                style="@style/text18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_border"
+                android:padding="10dp"
+                android:text="Add Dbg Tracks" />
+
+            <TextView
+                android:id="@+id/dbg_clear_tracks"
+                style="@style/text18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_border"
+                android:padding="10dp"
+                android:text="Clear Tracks" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

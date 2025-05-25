@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/page_summary">
+
+    <fragment
+        android:id="@+id/page_summary"
+        android:name="com.landenlabs.routes.pages.PageSummaryFrag"
+        android:label="@string/menu_summary"
+        tools:layout="@layout/page_summary_frag" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_routes"
+        android:name="com.landenlabs.routes.pages.PageRoutesFrag"
+        android:label="@string/menu_routes"
+        tools:layout="@layout/page_routes_frag" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_record"
+        android:name="com.landenlabs.routes.pages.PageRecorderFrag"
+        android:label="@string/menu_recorder"
+        tools:layout="@layout/page_recorder_frag" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_wx"
+        android:name="com.landenlabs.routes.pages.PageWeatherFrag"
+        android:label="@string/menu_weather"
+        tools:layout="@layout/page_weather_frag" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_dev"
+        android:name="com.landenlabs.routes.pages.PageDevFrag"
+        android:label="@string/menu_dev"
+        tools:layout="@layout/page_dev_frag" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_settings"
+        android:name="com.landenlabs.routes.pages.PageSettingsFrag"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/page_settings_frag" >
+    </fragment>
+</navigation>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "112854828031",
+    "project_id": "twc-auto-test",
+    "storage_bucket": "twc-auto-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112854828031:android:a588ab23593bdb37871dca",
+        "android_client_info": {
+          "package_name": "com.landenlabs_dev.routes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0-YObiTfKOPjKmmuv9uNP2yGOWXWc0s0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112854828031:android:a588ab23593bdb37871dca",
+        "android_client_info": {
+          "package_name": "com.landenlabs.routes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0-YObiTfKOPjKmmuv9uNP2yGOWXWc0s0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

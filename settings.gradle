@@ -1,0 +1,50 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+// Load Gradle credentials
+ext.twc_sign_props = new Properties()
+file("twc_credentials_sign.properties").withInputStream { twc_sign_props.load(it) }
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            name = 'localMaven'
+            url = "libs/maven_repo/"
+            // url file('mavenRepo')
+            // println "Add local repo=${url}"
+            // javadocDir
+        }
+
+        flatDir {
+            dirs 'libs'
+        }
+
+        maven {
+            name = 'weatherRepo'
+            url = 'https://android-repo.media.weather.com/MobileMapSDK/Maven'
+        }
+
+        // Provide Pangea files required for map  tiles.
+        maven {
+            name = "Pangea"
+            credentials {
+                username = twc_sign_props.PANGEA_MAVEN_USER
+                password = twc_sign_props.PANGEA_MAVEN_PWD
+            }
+            url = "https://repo.artifacts.weather.com/artifactory/pangea-mobile-kotlin-local"
+        }
+    }
+}
+rootProject.name = "all-Routes"
+include ':route'
+include ':lib_gpx'
+include ':wx_lib_data'

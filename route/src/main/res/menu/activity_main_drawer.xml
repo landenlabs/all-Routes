@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/page_summary"
+            android:icon="@drawable/ic_menu_summary"
+            android:title="@string/menu_summary" />
+        <item
+            android:id="@+id/page_routes"
+            android:icon="@drawable/ic_menu_routes"
+            android:title="@string/menu_routes" />
+        <item
+            android:id="@+id/page_record"
+            android:icon="@drawable/ic_menu_record"
+            android:title="@string/menu_recorder" />
+        <item
+            android:id="@+id/page_wx"
+            android:icon="@drawable/ic_menu_wx"
+            android:title="@string/menu_weather" />
+        <item
+            android:id="@+id/page_dev"
+            android:icon="@drawable/ic_menu_dev"
+            android:title="@string/menu_dev" />
+    </group>
+</menu>

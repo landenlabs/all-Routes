@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    apply from: "${project.rootDir}/dependencies.gradle"
+    namespace 'landenlabs.lib_data'
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        minSdk versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /*
+    compileOptions {
+        // Fails with version 21,  get error "class file has wrong version 65.0, should be 61.0"
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+     */
+}
+
+dependencies {
+    implementation "androidx.annotation:annotation:1.9.1"
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.9.0'
+
+    api "com.wsi.wxdata:wxdata:$versions.wxDataVersion"
+    // api project(path: ':wx_lib_data')
+    // api(name: 'wx_lib_data', ext: 'aar')
+    // api(name: 'wx_lib_data', ext: 'aar', version: '$versions.sdkVersion')
+}

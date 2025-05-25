@@ -1,0 +1,43 @@
+// TWC Auto weather app - 2023
+// Project dependencies to keep all modules in sync.
+
+// println "=========== dependencies included ============= for " + project.projectDir.path
+def appVersion  = "1.2.6"
+def appVernCode = 1002006    // this represents 1 or more digits for major, 3 digits for minor and patch
+        
+ext.versions = [
+    targetSdk       : 35,
+    compileSdk      : 35,
+    minSdk          : 28,
+
+    // TODO - switch from old MapSDK to new MapSDK.
+    mapSdkV1        : '5.7.2914',   // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
+    pangea4         : "4.20.0",      // https://github.com/TheWeatherCompany/maps-pangea-android/releases
+    mapSdkV2        : "2.0.94",
+    wxDataVersion   : '2.09.0716',
+    okHttp3         : '4.10.0',     // https://square.github.io/okhttp/changelog/
+
+    appVersion      : appVersion,
+    appVernCode     : appVernCode,   
+    sdkVersion      : appVersion,
+    sdkVernCode     : appVernCode,
+
+    appcompat       : "1.7.0",      // https://developer.android.com/jetpack/androidx/releases/appcompat
+    material        : "1.12.0",
+    annotation      : "1.9.1",
+    work            : "2.10.1",      // https://androidx.tech/artifacts/work/work-runtime/
+]
+
+// Limit languages to following list. Also look at 'resConfig' and 'resourceConfigurations'
+ext.resLangs = ['en', 'fr']
+// See ndk.abiFilters
+// ext.cpuTypes = ['armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64']
+ext.cpuTypes = ['armeabi-v7a', 'arm64-v8a',  'x86_64']
+
+// Load Gradle credentials
+ext.twc_sign_props = new Properties()
+file("${project.rootDir}/twc_credentials_sign.properties").withInputStream { twc_sign_props.load(it) }
+ext.releasekeyfile = "${project.rootDir}/assets/sign/${twc_sign_props.RELEASE_KEY_STORE_FILE}"
+ext.debugkeyfile = "${project.rootDir}/assets/sign/twc_debug.jks"
+
+

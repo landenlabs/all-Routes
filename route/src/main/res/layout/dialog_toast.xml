@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_toast"
+    style="@style/notifyStyle1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_notify_3d"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <TextView
+        android:id="@+id/toast_msg"
+        style="@style/text24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Message this is a very long test message to test how the dialog will wrap on some screens."
+        android:textColor="@color/black1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/toast_btns"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:constraint_referenced_ids="toast_yes, toast_no"
+        app:flow_horizontalAlign="start"
+        app:flow_wrapMode="chain"
+        app:flow_horizontalGap="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/toast_msg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/toast_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes" />
+
+    <Button
+        android:id="@+id/toast_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ IBM Confidential
+  ~ Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_nav_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_bar_height"
+    android:background="@drawable/bg_gradient"
+    android:checkedButton="@id/page_summary"
+    android:gravity="fill_horizontal"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"  >
+
+    <!-- button ids match navigation pages -->
+    <RadioButton
+        android:id="@+id/page_summary"
+        style="@style/RadioTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_summary"
+        android:text="@string/nav_state" />
+
+    <RadioButton
+        android:id="@+id/page_routes"
+        style="@style/RadioTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_routes"
+        android:text="@string/nav_routes" />
+
+    <RadioButton
+        android:id="@+id/page_record"
+        style="@style/RadioTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_record"
+        android:text="@string/nav_rec" />
+
+    <RadioButton
+        android:id="@+id/page_wx"
+        style="@style/RadioTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_wx"
+        android:text="@string/nav_wx" />
+
+</RadioGroup>
+

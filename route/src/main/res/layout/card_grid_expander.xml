@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  IBM Confidential
+  Copyright IBM Corp. 2016, 2021. Copyright WSI Corporation 1998, 2015
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:clipToOutline="true"
+    android:background="@drawable/bg_panel_3d"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/card_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/icon48"
+        android:layout_height="@dimen/icon48"
+        android:src="@drawable/logo"
+        />
+
+    <TextView
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="@id/card_expander"
+        app:layout_constraintBottom_toBottomOf="@id/card_expander"
+        app:layout_constraintStart_toEndOf="@+id/card_icon"
+        app:layout_constraintEnd_toStartOf="@+id/card_expander"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/text20"
+        android:text="Test Title"
+        android:id="@+id/card_title"
+        />
+
+    <ImageView
+        android:id="@+id/card_expander"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/icon48"
+        android:layout_height="@dimen/icon48"
+        android:src="@drawable/scroll_up"
+        />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/card_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="card_icon, card_title, card_expander"
+        />
+
+    <GridLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_divider1"
+        android:id="@+id/settings_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:useDefaultMargins="false">
+
+        <!-- columnWeight only works if width set to 0
+             and gravity set to one of the fills
+             fill = expand both horz and vert
+             fill_horizontal = only horz -->
+        <TextView
+            style="@style/text24"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:breakStrategy="balanced"
+            android:text="Label1: "
+            android:layout_columnWeight="1"
+            android:textFontWeight="800" />
+
+        <TextView
+            style="@style/text24"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:breakStrategy="balanced"
+            android:text="blah blah blah blah blah "
+            android:textFontWeight="800" />
+<!--
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="right"
+            android:text="Label Label2: "
+            android:textFontWeight="800" />
+
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="left"
+            android:text="blah "
+            android:textFontWeight="800" />
+
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="right"
+            android:text="Label Label2: "
+            android:textFontWeight="800" />
+
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="left"
+            android:text="blah "
+            android:textFontWeight="800" />
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="right"
+            android:text="Label1: "
+            android:textFontWeight="800" />
+
+        <TextView
+            style="@style/text24"
+            android:layout_gravity="left"
+            android:text="blah blah blah "
+            android:textFontWeight="800" />
+            -->
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527718414837",
+    "project_id": "twc-auto-max1",
+    "storage_bucket": "twc-auto-max1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527718414837:android:da38cb86bd9246616588bc",
+        "android_client_info": {
+          "package_name": "com.landenlabs_dev.routes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn1bLJnyJPzqQwjv1EMajLVbpfwAihlG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pages.PageRecorderFrag">
+
+    <!-- See nav_tab.xml and menu_bar.xml -->
+    <tag
+        android:id="@id/page_wx"
+        android:value="Weather" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/wx_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335"
+        android:padding="10dp"
+        app:constraint_referenced_ids="wx_title, wx_pick_btn, wx_clear_btn, wx_length, wx_duration, wx_steps"
+        app:flow_horizontalAlign="start"
+        app:flow_horizontalBias="0"
+        app:flow_maxElementsWrap="3"
+        app:flow_verticalBias="0"
+        app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wx_title"
+        style="@style/text20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alerts" />
+
+    <Button
+        android:id="@+id/wx_pick_btn"
+        style="@style/btn20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:background="@drawable/bg_btn_selector"
+        android:backgroundTint="#fff"
+        android:textAllCaps="false"
+        android:text="@string/wx_pick_btn" />
+
+    <Button
+        android:id="@+id/wx_clear_btn"
+        style="@style/btn20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_selector"
+        android:backgroundTint="#cff0"
+        android:textAllCaps="false"
+        android:text="@string/wx_clear_btn" />
+
+    <TextView
+        android:id="@+id/wx_length"
+        style="@style/text20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="x miles" />
+
+    <TextView
+        android:id="@+id/wx_duration"
+        style="@style/text20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="xx.yy hrs" />
+
+    <TextView
+        android:id="@+id/wx_steps"
+        style="@style/text20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="3 steps" />
+
+    <ProgressBar
+        android:progress="50"
+        style="@android:style/Widget.SeekBar"
+        android:max="100"
+        android:id="@+id/wx_progress"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wx_controls"
+        />
+
+    <com.landenlabs.routes.map.MapViewer
+        android:id="@+id/mapViewer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:tag="recordMap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wx_progress"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/route_list"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toBottomOf="@+id/wx_progress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/btn_center_camera"
+        android:background="#8fff"
+        app:layout_constraintEnd_toEndOf="@id/mapViewer"
+        app:layout_constraintTop_toBottomOf="@id/wx_progress"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_map_current"
+        />
+    <ImageView
+        android:id="@+id/btn_center_bounds"
+        android:background="#8fff"
+        app:layout_constraintEnd_toEndOf="@id/mapViewer"
+        app:layout_constraintTop_toBottomOf="@+id/btn_center_camera"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_map_bounds"
+        />
+
+    <include
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/dialog_smart_alert"
+        layout="@layout/dialog_smart_alert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_max="350dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"  />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
