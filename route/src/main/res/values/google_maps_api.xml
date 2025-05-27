@@ -1,28 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Package: com.wsi.wsi_test_map  using AndroidStudio default debug keystore, pwd=android
-         keytool -list -v -keystore ~/.android/debug.keystore
 
-         MD5:  09:49:8F:5F:AA:C4:A4:DF:37:D9:BF:AC:3D:C6:A5:9C
-         SHA1: 53:22:8E:2B:04:D3:A6:57:11:2A:D3:07:3E:C9:D1:CD:92:46:5F:E2
-         SHA256: D6:B0:7C:A9:8B:C3:8F:C9:29:8F:2C:34:EF:76:C8:BC:16:63:5B:86:D7:BA:15:F9:F6:6C:9F:4A:D1:CF:A1:5C
-
-     MapSDK key
-    <string name="google_maps_key1" translatable="false">AIzaSyB1Zr4J1UulRTvyPa4dWbsGqK0_MSniMFA</string>
-    <string name="google_maps_key" translatable="false">AIzaSyAjfn7R18-hu2xzlvAWYHs_ODdASV1dqYU</string>
-    -->
-
-    <!-- See signing in build.gradle -->
-    <!-- B2B Debug key -->
-    <string name="google_maps_key1" translatable="false">AIzaSyBoXfjPGVtk-hxOvmYG7VTGBMTjD8-zFZc</string>
-
-    <string name="google_maps_key" translatable="false">AIzaSyCmOYoCI-NuG1oJHBH-DT7_qKP-6bm0IgY</string>
-
-    <!-- B2B Release key
-    <string name="google_maps_key" translatable="false">AIzaSyCEJKIfJxwVtfW4bw4OEOgjIeaU02fATTg</string>
-    -->
-
-    <!-- WSI B2B debug key
-    <string name="google_maps_key" translatable="false">AIzaSyBoXfjPGVtk-hxOvmYG7VTGBMTjD8-zFZc</string>
-     -->
 </resources>
