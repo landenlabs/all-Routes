@@ -1,5 +1,5 @@
-# max-auto-route
-Automotive Route Recorder Android App
+# all-route (EXPERIMENT - NOT DONE YET)
+Android Route Recorder App
 
 Demo app to experiment with recording and comparing routes to automatically
 determine current route by matching location, time and day-of-week to previously 
