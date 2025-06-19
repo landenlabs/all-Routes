@@ -14,7 +14,7 @@ ext.versions = [
     mapSdkV1        : '5.7.2914',   // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
     pangea4         : "4.20.0",      // https://github.com/TheWeatherCompany/maps-pangea-android/releases
     mapSdkV2        : "2.0.94",
-    wxDataVersion   : '2.09.0716',
+    wxDataVersion   : '2.25.0618',
     okHttp3         : '4.10.0',     // https://square.github.io/okhttp/changelog/
 
     appVersion      : appVersion,

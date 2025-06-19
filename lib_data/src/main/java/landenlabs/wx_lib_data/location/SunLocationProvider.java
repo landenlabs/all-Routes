@@ -219,7 +219,9 @@ public class SunLocationProvider {
                     ParseJson.getFloat(locationJObj, "longitude", 0.0f),
                     ParseJson.getString(locationJObj, "ianaTimeZone", ""),
                     ParseJson.getStringIf(locationJObj, "address", ""),
-                    ParseJson.getString(locationJObj, "type", "")
+                    ParseJson.getString(locationJObj, "type", ""),
+                    "",
+                    null
             );
         }
         return wxLocation;
@@ -269,7 +271,9 @@ public class SunLocationProvider {
                         lng,
                         get(zoneId, idx, ""),
                         get(address, idx, ""),
-                        get(locType, idx, "")
+                        get(locType, idx, ""),
+                        "",
+                        null
                        );
 
                 list.add(wsiLocation);

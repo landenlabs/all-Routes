@@ -20,6 +20,7 @@ import com.wsi.wxdata.WxLocation;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.time.ZoneId;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
@@ -61,8 +62,8 @@ public class WxLocationEx {
         return new WxLocation(
                 "gps", "", "", "", Locale.getDefault().getCountry(), "",
                 gps.getLatitude(), gps.getLongitude(),
-                TimeZone.getDefault().getID(),
-                "", LOC_TYPE_CITY);
+                ZoneId.systemDefault().getId(),
+                "", LOC_TYPE_CITY, "", null);
     }
 
     /*
@@ -178,7 +179,7 @@ public class WxLocationEx {
             .put(loc.postalCode)                  //  5
             .put((int)(loc.latitude*SCALE_INT))   //  6
             .put((int)(loc.longitude*SCALE_INT) ) //  7
-            .put(loc.dtZone.getID())              //  8
+            .put(loc.dtZone)                      //  8
             .put(loc.address)                     //  9
             .put(loc.locType)                     //  10
             .put(loc.tag);                        //  11
@@ -203,7 +204,9 @@ public class WxLocationEx {
                     ja.getInt(7)/SCALE_INT,     // longitude
                     ja.getString(8),                     // TimeZone
                     ja.getString(9),                     // address
-                    ja.getString(10)                     // locType
+                    ja.getString(10),                     // locType
+                    "",     // dma
+                    null    // aux
                     );
             loc.tag = ja.getString(11);
             return loc;

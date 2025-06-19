@@ -24,6 +24,7 @@ import com.wsi.wxdata.WxFifteenMinute;
 import com.wsi.wxdata.WxLifestyleDriving;
 import com.wsi.wxdata.WxLocation;
 import com.wsi.wxdata.WxTime;
+import com.wsi.wxdata.datetime.WxDateTime;
 
 import org.joda.time.DateTime;
 
@@ -42,7 +43,7 @@ public class SmartAlert {
     public final WxTime timeRange;
     public WxLocation wxLocation;
     public final int metersTraveled;
-    public final DateTime dateTime;
+    public final WxDateTime dateTime;
 
     public boolean hasValidData = false;
     public boolean hasValidLoc = false;
@@ -51,7 +52,7 @@ public class SmartAlert {
     public float snowRate = 0;          // imperial inches/hour, metric cm?/hour
     public float temperatureC = 0;
     public float windSpeedKm = 0;
-    public DateTime drivingDifficultyTime = null;
+    public WxDateTime drivingDifficultyTime = null;
     public int drivingDifficultyIndex = 0; //  index = 0=none, 1=windy, 2=foggy, 3=wet, 4=ponding, 5=snowy, 6=icy
 
     public static String[] DDI_NAMES = new String[] {
@@ -93,7 +94,7 @@ public class SmartAlert {
         this.timeRange = timeRange;
         this.wxLocation = createAt(pt.toLatLng());
         this.metersTraveled = metersTraveled;
-        this.dateTime = new DateTime(pt.milli);
+        this.dateTime = new WxDateTime(pt.milli);
     }
 
     public static final String LOC_TYPE_CITY = "city";
@@ -102,7 +103,7 @@ public class SmartAlert {
                 "gps", "", "", "", Locale.getDefault().getCountry(), "",
                 gps.getLatitude(), gps.getLongitude(),
                 TimeZone.getDefault().getID(),
-                "", LOC_TYPE_CITY);
+                "", LOC_TYPE_CITY, "", null);
     }
 
     public void setWeather(@Nullable WxFifteenMinute data) {

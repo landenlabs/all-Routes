@@ -12,10 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
-import org.joda.time.DateTime;
+import com.wsi.wxdata.datetime.WxDateTime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -223,7 +226,7 @@ public final class ParseDateUtils {
         return format.format(date);
     }
 
-    private static Date BAD_DATE_YR2000 =  new DateTime(2000, 1, 1, 1, 0).toDate();
+    private static final Date BAD_DATE_YR2000 =  new Date(2000, 1, 1, 1, 0, 0);
 
     public static String formatDate(@NonNull Context context, @Nullable Date date, @Nullable TimeZone timeZone,
             int patternStringResource12h, int patternStringResource24h) {

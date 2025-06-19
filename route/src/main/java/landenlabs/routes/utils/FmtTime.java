@@ -13,6 +13,8 @@ import android.text.style.ForegroundColorSpan;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.wsi.wxdata.datetime.WxDateTime;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
@@ -78,7 +80,7 @@ public class FmtTime {
             return String.format(Locale.US, "%d min", min);
     }
 
-    public static int getNearest(@NonNull DateTime wantDT, @NonNull ArrayList<DateTime> listDT) {
+    public static int getNearest(@NonNull WxDateTime wantDT, @NonNull ArrayList<WxDateTime> listDT) {
         int nearIdx = 0;
         if (!listDT.isEmpty()) {
             long nearMill = Math.abs(wantDT.getMillis() - listDT.get(0).getMillis());
@@ -93,7 +95,7 @@ public class FmtTime {
         return nearIdx;
     }
 
-    public static String toString(@Nullable DateTime dt, @NonNull String fmt) {
+    public static String toString(@Nullable WxDateTime dt, @NonNull String fmt) {
         return (dt != null) ? dt.toString(fmt) : "";
     }
 
