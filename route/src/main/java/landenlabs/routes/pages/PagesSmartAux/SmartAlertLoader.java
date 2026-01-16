@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PagesSmartAux;
+package landenlabs.routes.pages.PagesSmartAux;
 
-import static com.landenlabs.routes.logger.AppLog.LOG_GETDATA;
+import static landenlabs.routes.logger.AppLog.LOG_GETDATA;
 
 import android.net.TrafficStats;
 import android.os.Looper;
@@ -13,9 +13,9 @@ import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 
-import com.landenlabs.routes.data.LiveQueue;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.events.EventSmartAalert;
+import landenlabs.routes.data.LiveQueue;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.events.EventSmartAalert;
 import com.wsi.wxdata.WxAlertHeadlines;
 import com.wsi.wxdata.WxAlertsFetcher;
 import com.wsi.wxdata.WxFifteenMinute;

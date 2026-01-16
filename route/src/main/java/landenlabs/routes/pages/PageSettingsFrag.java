@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
-import static com.landenlabs.routes.logger.Analytics.Event.PAGE_SETTINGS;
-import static com.landenlabs.routes.utils.FmtTime.milliToSec;
-import static com.landenlabs.routes.utils.FmtTime.secToMilli;
-import static com.landenlabs.routes.utils.SysUtils.strToDouble;
-import static com.landenlabs.routes.utils.SysUtils.strToInt;
-import static com.landenlabs.routes.utils.SysUtils.strToLong;
+import static landenlabs.routes.logger.Analytics.Event.PAGE_SETTINGS;
+import static landenlabs.routes.utils.FmtTime.milliToSec;
+import static landenlabs.routes.utils.FmtTime.secToMilli;
+import static landenlabs.routes.utils.SysUtils.strToDouble;
+import static landenlabs.routes.utils.SysUtils.strToInt;
+import static landenlabs.routes.utils.SysUtils.strToLong;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -23,11 +23,11 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.data.RouteSettings;
-import com.landenlabs.routes.databinding.PageSettingsFragBinding;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.logger.Analytics;
+import landenlabs.routes.R;
+import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.databinding.PageSettingsFragBinding;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.logger.Analytics;
 
 import java.util.Locale;
 

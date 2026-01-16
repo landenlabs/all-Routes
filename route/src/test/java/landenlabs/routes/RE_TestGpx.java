@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes;
+package landenlabs.routes;
 
 import static org.junit.Assert.assertNotNull;
 
 import android.content.Context;
 
-import com.landenlabs.gpx_lib.GPXParser;
-import com.landenlabs.gpx_lib.domain.Gpx;
+import landenlabs.gpx_lib.GPXParser;
+import landenlabs.gpx_lib.domain.Gpx;
 
 import org.junit.Before;
 import org.junit.Test;

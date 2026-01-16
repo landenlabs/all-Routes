@@ -24,7 +24,7 @@
  * @see http://LanDenLabs.com/
  */
 
-package com.landenlabs.routes.utils;
+package landenlabs.routes.utils;
 
 import android.graphics.Color;
 import android.graphics.Typeface;

@@ -3,12 +3,12 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.Record;
+package landenlabs.routes.Record;
 
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-import static com.landenlabs.routes.Record.RecordBase.getNotificationManager;
-import static com.landenlabs.routes.Record.RecordBase.setIntentParameters;
+import static landenlabs.routes.Record.RecordBase.getNotificationManager;
+import static landenlabs.routes.Record.RecordBase.setIntentParameters;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -20,8 +20,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
-import com.landenlabs.routes.MainActivity;
-import com.landenlabs.routes.R;
+import landenlabs.routes.MainActivity;
+import landenlabs.routes.R;
 
 public class RecordNotify {
 

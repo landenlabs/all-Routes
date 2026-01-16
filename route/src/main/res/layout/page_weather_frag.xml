@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/wx_controls"
         />
 
-    <com.landenlabs.routes.map.MapViewer
+    <landenlabs.routes.map.MapViewer
         android:id="@+id/mapViewer"
         android:layout_width="match_parent"
         android:layout_height="0dp"

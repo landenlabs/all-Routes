@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes;
+package landenlabs.routes;
 
-import static com.landenlabs.routes.utils.SysUtils.getNotificationManager;
+import static landenlabs.routes.utils.SysUtils.getNotificationManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,17 +13,17 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.Record.RecordNotify;
-import com.landenlabs.routes.Record.RecordService;
-import com.landenlabs.routes.data.LiveQueue;
-import com.landenlabs.routes.data.RouteSettings;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.data.TrackGrid;
-import com.landenlabs.routes.db.SqlDb;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.events.EventDb;
-import com.landenlabs.routes.utils.AppCfg;
-import com.landenlabs.routes.utils.PrefUtil;
+import landenlabs.routes.Record.RecordNotify;
+import landenlabs.routes.Record.RecordService;
+import landenlabs.routes.data.LiveQueue;
+import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.data.TrackGrid;
+import landenlabs.routes.db.SqlDb;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.events.EventDb;
+import landenlabs.routes.utils.AppCfg;
+import landenlabs.routes.utils.PrefUtil;
 import com.wsi.wxdata.WxData;
 
 import java.lang.ref.WeakReference;

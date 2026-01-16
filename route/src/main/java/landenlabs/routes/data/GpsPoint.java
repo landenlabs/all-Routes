@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
 import android.location.Location;
 import android.location.LocationManager;

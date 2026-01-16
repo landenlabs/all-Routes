@@ -4,20 +4,20 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.Record;
+package landenlabs.routes.Record;
 
-import static com.landenlabs.routes.Record.RecordBase.ConfigSrv;
-import static com.landenlabs.routes.Record.RecordBase.IdSrv;
-import static com.landenlabs.routes.Record.RecordBase.PauseSrv;
-import static com.landenlabs.routes.Record.RecordBase.ResumeSrv;
-import static com.landenlabs.routes.Record.RecordBase.StartSrv;
-import static com.landenlabs.routes.Record.RecordBase.StopSrv;
-import static com.landenlabs.routes.logger.Analytics.Event.RECORD_STOP;
-import static com.landenlabs.routes.utils.FmtTime.ageMilli;
-import static com.landenlabs.routes.utils.FmtTime.formatAge;
-import static com.landenlabs.routes.utils.GpsUtils.getCurrentLocation;
-import static com.landenlabs.routes.utils.SysUtils.getFusedLocation;
-import static com.landenlabs.routes.utils.SysUtils.getNotificationManager;
+import static landenlabs.routes.Record.RecordBase.ConfigSrv;
+import static landenlabs.routes.Record.RecordBase.IdSrv;
+import static landenlabs.routes.Record.RecordBase.PauseSrv;
+import static landenlabs.routes.Record.RecordBase.ResumeSrv;
+import static landenlabs.routes.Record.RecordBase.StartSrv;
+import static landenlabs.routes.Record.RecordBase.StopSrv;
+import static landenlabs.routes.logger.Analytics.Event.RECORD_STOP;
+import static landenlabs.routes.utils.FmtTime.ageMilli;
+import static landenlabs.routes.utils.FmtTime.formatAge;
+import static landenlabs.routes.utils.GpsUtils.getCurrentLocation;
+import static landenlabs.routes.utils.SysUtils.getFusedLocation;
+import static landenlabs.routes.utils.SysUtils.getNotificationManager;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -42,16 +42,16 @@ import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
-import com.landenlabs.routes.GlobalHolder;
-import com.landenlabs.routes.data.ArrayGps;
-import com.landenlabs.routes.data.GpsPoint;
-import com.landenlabs.routes.data.RouteSettings;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.events.EventAction;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.events.EventStatus;
-import com.landenlabs.routes.events.EventTrack;
-import com.landenlabs.routes.logger.Analytics;
+import landenlabs.routes.GlobalHolder;
+import landenlabs.routes.data.ArrayGps;
+import landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.events.EventAction;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.events.EventStatus;
+import landenlabs.routes.events.EventTrack;
+import landenlabs.routes.logger.Analytics;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

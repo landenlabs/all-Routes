@@ -3,25 +3,25 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.gpx_lib;
+package landenlabs.gpx_lib;
 
 import android.util.Xml;
 
-import com.landenlabs.gpx_lib.domain.Author;
-import com.landenlabs.gpx_lib.domain.Bounds;
-import com.landenlabs.gpx_lib.domain.Copyright;
-import com.landenlabs.gpx_lib.domain.Email;
-import com.landenlabs.gpx_lib.domain.Extensions;
-import com.landenlabs.gpx_lib.domain.Gpx;
-import com.landenlabs.gpx_lib.domain.Link;
-import com.landenlabs.gpx_lib.domain.Metadata;
-import com.landenlabs.gpx_lib.domain.Point;
-import com.landenlabs.gpx_lib.domain.Route;
-import com.landenlabs.gpx_lib.domain.RoutePoint;
-import com.landenlabs.gpx_lib.domain.Track;
-import com.landenlabs.gpx_lib.domain.TrackPoint;
-import com.landenlabs.gpx_lib.domain.TrackSegment;
-import com.landenlabs.gpx_lib.domain.WayPoint;
+import landenlabs.gpx_lib.domain.Author;
+import landenlabs.gpx_lib.domain.Bounds;
+import landenlabs.gpx_lib.domain.Copyright;
+import landenlabs.gpx_lib.domain.Email;
+import landenlabs.gpx_lib.domain.Extensions;
+import landenlabs.gpx_lib.domain.Gpx;
+import landenlabs.gpx_lib.domain.Link;
+import landenlabs.gpx_lib.domain.Metadata;
+import landenlabs.gpx_lib.domain.Point;
+import landenlabs.gpx_lib.domain.Route;
+import landenlabs.gpx_lib.domain.RoutePoint;
+import landenlabs.gpx_lib.domain.Track;
+import landenlabs.gpx_lib.domain.TrackPoint;
+import landenlabs.gpx_lib.domain.TrackSegment;
+import landenlabs.gpx_lib.domain.WayPoint;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;

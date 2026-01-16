@@ -1,4 +1,4 @@
-package com.landenlabs.routes.logger;
+package landenlabs.routes.logger;
 
 import android.app.Activity;
 

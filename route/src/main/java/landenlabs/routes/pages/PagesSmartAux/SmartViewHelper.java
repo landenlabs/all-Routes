@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PagesSmartAux;
+package landenlabs.routes.pages.PagesSmartAux;
 
 import android.content.Context;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 
-import com.landenlabs.routes.R;
+import landenlabs.routes.R;
 
 /**
  * Recycler "helper" to pass state information to  presentation SmartAlerts.

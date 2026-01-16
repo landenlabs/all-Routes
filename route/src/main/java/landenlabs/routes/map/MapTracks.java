@@ -3,19 +3,19 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.map;
+package landenlabs.routes.map;
 
 import android.graphics.Color;
 import android.util.SparseArray;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import com.landenlabs.routes.data.LiveQueue;
-import com.landenlabs.routes.data.RouteSettings;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.data.TrackGrid;
-import com.landenlabs.routes.data.TrackIdList;
-import com.landenlabs.routes.utils.GpsUtils;
+import landenlabs.routes.data.LiveQueue;
+import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.data.TrackGrid;
+import landenlabs.routes.data.TrackIdList;
+import landenlabs.routes.utils.GpsUtils;
 import com.weather.pangea.geom.LatLng;
 import com.weather.pangea.geom.Polygon;
 import com.weather.pangea.geom.Polyline;

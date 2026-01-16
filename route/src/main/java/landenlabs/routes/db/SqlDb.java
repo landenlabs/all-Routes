@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.landenlabs.routes.db;
+package landenlabs.routes.db;
 
 
 import android.content.ContentValues;
@@ -28,7 +28,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.landenlabs.routes.data.Track;
+import landenlabs.routes.data.Track;
 
 import java.util.ArrayList;
 import java.util.List;

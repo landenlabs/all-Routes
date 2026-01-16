@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageUtils;
+package landenlabs.routes.pages.PageUtils;
 
-import static com.landenlabs.routes.utils.SysUtils.joinCS;
+import static landenlabs.routes.utils.SysUtils.joinCS;
 
 import android.graphics.Color;
 import android.text.Spannable;

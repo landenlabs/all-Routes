@@ -3,12 +3,12 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.utils;
+package landenlabs.routes.utils;
 
 import static android.location.LocationManager.GPS_PROVIDER;
-import static com.landenlabs.routes.utils.PolyUtil.EARTH_RADIUS_METERS;
-import static com.landenlabs.routes.utils.SysUtils.getFusedLocation;
-import static com.landenlabs.routes.utils.SysUtils.getLocationManager;
+import static landenlabs.routes.utils.PolyUtil.EARTH_RADIUS_METERS;
+import static landenlabs.routes.utils.SysUtils.getFusedLocation;
+import static landenlabs.routes.utils.SysUtils.getLocationManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.GpsPoint;
 import com.weather.pangea.geom.LatLng;
 import com.wsi.mapsdk.utils.WLatLng;
 import com.wsi.mapsdk.utils.WLatLngBounds;

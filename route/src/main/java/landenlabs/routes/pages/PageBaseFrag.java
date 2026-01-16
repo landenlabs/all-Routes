@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,9 +18,9 @@ import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.landenlabs.routes.GlobalHolder;
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.events.EventBase;
+import landenlabs.routes.GlobalHolder;
+import landenlabs.routes.R;
+import landenlabs.routes.events.EventBase;
 
 public abstract class PageBaseFrag extends Fragment
         implements  MenuProvider, GlobalHolder.EventListener {

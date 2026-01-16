@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -13,9 +13,9 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.db.SqlDb;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.events.EventStatus;
+import landenlabs.routes.db.SqlDb;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.events.EventStatus;
 import com.wsi.mapsdk.utils.WLatLng;
 
 import java.util.Locale;

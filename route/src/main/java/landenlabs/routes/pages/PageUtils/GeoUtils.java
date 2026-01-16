@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageUtils;
+package landenlabs.routes.pages.PageUtils;
 
 import android.content.Context;
 import android.location.Geocoder;

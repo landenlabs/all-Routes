@@ -1,4 +1,4 @@
-package com.landenlabs.gpx_lib.domain;
+package landenlabs.gpx_lib.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

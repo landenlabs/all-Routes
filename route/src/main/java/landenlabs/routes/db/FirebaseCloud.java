@@ -3,12 +3,12 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.db;
+package landenlabs.routes.db;
 
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.GpsPoint;
 
 import java.util.ArrayList;
 

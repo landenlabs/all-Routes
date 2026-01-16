@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.map;
+package landenlabs.routes.map;
 
-import static com.landenlabs.routes.utils.DataUtils.getString1x;
+import static landenlabs.routes.utils.DataUtils.getString1x;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,8 +24,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleObserver;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.logger.AppLog;
+import landenlabs.routes.R;
+import landenlabs.routes.logger.AppLog;
 import com.weather.pangea.event.MapLongTouchEvent;
 import com.weather.pangea.layer.Layer;
 import com.weather.pangea.layer.overlay.SimpleOverlayLayer;

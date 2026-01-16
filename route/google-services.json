@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:112854828031:android:a588ab23593bdb37871dca",
         "android_client_info": {
-          "package_name": "com.landenlabs_dev.routes"
+          "package_name": "landenlabs_dev.routes"
         }
       },
       "oauth_client": [],
@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:112854828031:android:a588ab23593bdb37871dca",
         "android_client_info": {
-          "package_name": "com.landenlabs.routes"
+          "package_name": "landenlabs.routes"
         }
       },
       "oauth_client": [],

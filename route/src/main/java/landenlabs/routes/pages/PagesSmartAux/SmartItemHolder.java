@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PagesSmartAux;
+package landenlabs.routes.pages.PagesSmartAux;
 
-import static com.landenlabs.routes.pages.PagesSmartAux.SmartAlert.DDI_NAMES;
+import static landenlabs.routes.pages.PagesSmartAux.SmartAlert.DDI_NAMES;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -18,8 +18,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.utils.Ui;
+import landenlabs.routes.R;
+import landenlabs.routes.utils.Ui;
 
 import org.joda.time.DateTime;
 

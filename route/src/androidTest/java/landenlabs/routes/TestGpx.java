@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes;
+package landenlabs.routes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -14,8 +14,8 @@ import android.content.res.AssetManager;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.landenlabs.gpx_lib.GPXParser;
-import com.landenlabs.gpx_lib.domain.Gpx;
+import landenlabs.gpx_lib.GPXParser;
+import landenlabs.gpx_lib.domain.Gpx;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +35,7 @@ public class TestGpx {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.landenlabs.routes", appContext.getPackageName());
+        assertEquals("landenlabs.routes", appContext.getPackageName());
     }
 
     @Test

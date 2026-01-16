@@ -3,21 +3,21 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
 import static android.content.Context.ACTIVITY_SERVICE;
-import static com.landenlabs.routes.logger.Analytics.Event.PAGE_DEV;
-import static com.landenlabs.routes.pages.PageUtils.FragUtilSettings.addCol;
-import static com.landenlabs.routes.pages.PageUtils.FragUtilSettings.addRow;
-import static com.landenlabs.routes.pages.PageUtils.FragUtilSettings.addRowBtn;
-import static com.landenlabs.routes.pages.PageUtils.FragUtilSettings.setCard;
-import static com.landenlabs.routes.utils.GpsUtils.getCurrentLocation;
-import static com.landenlabs.routes.utils.GpsUtils.getLastKnownLocation;
-import static com.landenlabs.routes.utils.GpsUtils.logString;
-import static com.landenlabs.routes.utils.SysUtils.getAppVersion;
-import static com.landenlabs.routes.utils.SysUtils.getLocationManager;
-import static com.landenlabs.routes.utils.SysUtils.getServiceSafe;
-import static com.landenlabs.routes.utils.SysUtils.restartApp;
+import static landenlabs.routes.logger.Analytics.Event.PAGE_DEV;
+import static landenlabs.routes.pages.PageUtils.FragUtilSettings.addCol;
+import static landenlabs.routes.pages.PageUtils.FragUtilSettings.addRow;
+import static landenlabs.routes.pages.PageUtils.FragUtilSettings.addRowBtn;
+import static landenlabs.routes.pages.PageUtils.FragUtilSettings.setCard;
+import static landenlabs.routes.utils.GpsUtils.getCurrentLocation;
+import static landenlabs.routes.utils.GpsUtils.getLastKnownLocation;
+import static landenlabs.routes.utils.GpsUtils.logString;
+import static landenlabs.routes.utils.SysUtils.getAppVersion;
+import static landenlabs.routes.utils.SysUtils.getLocationManager;
+import static landenlabs.routes.utils.SysUtils.getServiceSafe;
+import static landenlabs.routes.utils.SysUtils.restartApp;
 
 import android.Manifest;
 import android.app.ActivityManager;
@@ -54,11 +54,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.core.app.ActivityCompat;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.Record.RecordBase;
-import com.landenlabs.routes.databinding.PageDevFragBinding;
-import com.landenlabs.routes.logger.Analytics;
-import com.landenlabs.routes.utils.GpsUtils;
+import landenlabs.routes.R;
+import landenlabs.routes.Record.RecordBase;
+import landenlabs.routes.databinding.PageDevFragBinding;
+import landenlabs.routes.logger.Analytics;
+import landenlabs.routes.utils.GpsUtils;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;

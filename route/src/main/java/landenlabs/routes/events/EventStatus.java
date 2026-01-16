@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.events;
+package landenlabs.routes.events;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

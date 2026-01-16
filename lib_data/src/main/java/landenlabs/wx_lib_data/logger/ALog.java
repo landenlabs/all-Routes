@@ -367,10 +367,10 @@ public enum ALog {
 
         /*
             java.lang.Exception:
-            	at com.landenlabs.sensor.logger.ALog.getMsgStack(ALog.java:339)
-            	at com.landenlabs.sensor.logger.ALog.tagMsgStack(ALog.java:506)
-            	at com.landenlabs.sensor.sensor.ExecState.reset(ExecState.java:51)
-            	at com.landenlabs.sensor.sensor.WxManager.start(WxManager.java:140)
+            	at landenlabs.sensor.logger.ALog.getMsgStack(ALog.java:339)
+            	at landenlabs.sensor.logger.ALog.tagMsgStack(ALog.java:506)
+            	at landenlabs.sensor.sensor.ExecState.reset(ExecState.java:51)
+            	at landenlabs.sensor.sensor.WxManager.start(WxManager.java:140)
          */
         return strackSb.toString().replaceAll("[\t a-z.]+ALog[^\n]+\n", "");
     }

@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.utils;
+package landenlabs.routes.utils;
 
 import android.graphics.Color;
 import android.text.Spannable;

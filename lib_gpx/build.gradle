@@ -9,7 +9,7 @@ plugins {
 
 android {
     apply from: "${project.rootDir}/dependencies.gradle"
-    namespace 'com.landenlabs.gpx_lib'
+    namespace 'landenlabs.gpx_lib'
     compileSdk versions.compileSdk
 
     defaultConfig {

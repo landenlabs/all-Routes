@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.map;
+package landenlabs.routes.map;
 
 
-import static com.landenlabs.routes.utils.GpsUtils.metersBetween;
+import static landenlabs.routes.utils.GpsUtils.metersBetween;
 
 import androidx.annotation.NonNull;
 
-import com.landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.GpsPoint;
 import com.wsi.mapsdk.utils.WLatLng;
 
 /**

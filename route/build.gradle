@@ -26,13 +26,13 @@ java {
 android {
     apply from: "${project.rootDir}/dependencies.gradle"
 
-    namespace = "com.landenlabs.routes"
+    namespace = "landenlabs.routes"
     compileSdk versions.compileSdk
 
     defaultConfig {
         // Keep in sync with google-services.json
-        applicationId "com.landenlabs_dev.routes"
-        // applicationId "com.landenlabs.routes"
+        applicationId "landenlabs_dev.routes"
+        // applicationId "landenlabs.routes"
 
         minSdk versions.minSdk
         targetSdkVersion versions.targetSdk
@@ -185,11 +185,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.lifecycle:lifecycle-process:2.9.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.google.android.material:material:1.13.0'
 
     implementation "com.google.android.gms:play-services-location:21.3.0"
-    implementation "androidx.work:work-runtime:2.10.1"   // https://developer.android.com/jetpack/androidx/releases/work
-    implementation "androidx.sqlite:sqlite:2.5.1"       // https://developer.android.com/jetpack/androidx/releases/sqlite
+    implementation 'androidx.work:work-runtime:2.11.0'
+    // https://developer.android.com/jetpack/androidx/releases/work
+    implementation 'androidx.sqlite:sqlite:2.6.2'
+    // https://developer.android.com/jetpack/androidx/releases/sqlite
     implementation 'net.danlew:android.joda:2.13.1'
     implementation project(path: ':lib_data')
     // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
@@ -201,15 +203,15 @@ dependencies {
     api(name: "mapsdk", ext: 'aar', version: "$versions.mapSdkV1",  group: 'mapsdk')
     // Using Maven repo Pangea
     api("com.weather.pangea.android:pangeamapbox:$versions.pangea4")
-    implementation "androidx.security:security-crypto:1.1.0-alpha03"
+    implementation 'androidx.security:security-crypto:1.1.0'
 
-    def navVer = "2.9.0"
+    def navVer = "2.9.6"
     implementation "androidx.navigation:navigation-fragment:$navVer"
     implementation "androidx.navigation:navigation-ui:$navVer"
 
     // https://firebase.google.com/docs/android/android-play-services?authuser=0&hl=en
     // Import the Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:33.14.0')
+    implementation platform('com.google.firebase:firebase-bom:34.6.0')
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -223,14 +225,14 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'androidx.test:core:1.6.1'
-    testImplementation 'org.assertj:assertj-core:3.26.0'
-    testImplementation 'org.robolectric:robolectric:4.12.2'
-    testImplementation 'joda-time:joda-time:2.13.1'
+    testImplementation 'androidx.test:core:1.7.0'
+    testImplementation 'org.assertj:assertj-core:3.27.6'
+    testImplementation 'org.robolectric:robolectric:4.16'
+    testImplementation 'joda-time:joda-time:2.14.0'
     testImplementation project(path: ':lib_gpx')
 
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
     androidTestImplementation project(path: ':lib_gpx')
 
     // https://square.github.io/leakcanary/getting_started/

@@ -3,17 +3,17 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
-import static com.landenlabs.routes.data.GpsPoint.NO_POINT;
-import static com.landenlabs.routes.map.MapUtils.isSimilar;
-import static com.landenlabs.routes.utils.GpsUtils.metersBetween;
+import static landenlabs.routes.data.GpsPoint.NO_POINT;
+import static landenlabs.routes.map.MapUtils.isSimilar;
+import static landenlabs.routes.utils.GpsUtils.metersBetween;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.utils.UnitDistance;
-import com.landenlabs.routes.utils.UnitSpeed;
+import landenlabs.routes.utils.UnitDistance;
+import landenlabs.routes.utils.UnitSpeed;
 import com.weather.pangea.geom.Polyline;
 import com.wsi.mapsdk.utils.WLatLng;
 import com.wsi.mapsdk.utils.WLatLngBounds;

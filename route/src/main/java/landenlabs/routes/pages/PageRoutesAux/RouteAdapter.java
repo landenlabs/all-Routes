@@ -3,15 +3,15 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageRoutesAux;
+package landenlabs.routes.pages.PageRoutesAux;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.landenlabs.routes.data.ArrayListEx;
-import com.landenlabs.routes.data.Track;
+import landenlabs.routes.data.ArrayListEx;
+import landenlabs.routes.data.Track;
 
 /**
  * Recycler Adapter to present collection of routes.

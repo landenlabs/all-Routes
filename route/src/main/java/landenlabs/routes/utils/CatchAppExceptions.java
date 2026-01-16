@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.utils;
+package landenlabs.routes.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,8 +21,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.logger.Externals;
+import landenlabs.routes.R;
+import landenlabs.routes.logger.Externals;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.utils;
+package landenlabs.routes.utils;
 
-import static com.landenlabs.routes.utils.GpsUtils.metersBetween;
+import static landenlabs.routes.utils.GpsUtils.metersBetween;
 import static java.lang.Math.toRadians;
 
 import com.wsi.mapsdk.utils.WLatLng;

@@ -3,13 +3,13 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.map;
+package landenlabs.routes.map;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.landenlabs.routes.R;
+import landenlabs.routes.R;
 import com.wsi.mapsdk.map.WSIMap;
 import com.wsi.mapsdk.markers.WSIMarkerView;
 import com.wsi.mapsdk.markers.WSIMarkerViewOptions;

@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PagesSmartAux;
+package landenlabs.routes.pages.PagesSmartAux;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.landenlabs.routes.data.ArrayListEx;
+import landenlabs.routes.data.ArrayListEx;
 
 /**
  * Recycler Adapter to present collection of SmartAlerts.

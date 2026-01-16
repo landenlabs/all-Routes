@@ -3,10 +3,10 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
-import static com.landenlabs.routes.utils.GpsUtils.metersBetween;
-import static com.landenlabs.routes.utils.GpsUtils.sphericalTravel;
+import static landenlabs.routes.utils.GpsUtils.metersBetween;
+import static landenlabs.routes.utils.GpsUtils.sphericalTravel;
 import static java.lang.Math.toRadians;
 
 import android.content.SharedPreferences;

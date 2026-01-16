@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.Record;
+package landenlabs.routes.Record;
 
-import static com.landenlabs.routes.Record.RecordBase.cancel;
+import static landenlabs.routes.Record.RecordBase.cancel;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

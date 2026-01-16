@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
 import androidx.annotation.NonNull;
 
-import com.landenlabs.routes.data.TrackGrid.GridPos;
+import landenlabs.routes.data.TrackGrid.GridPos;
 
 import org.joda.time.DateTime;
 

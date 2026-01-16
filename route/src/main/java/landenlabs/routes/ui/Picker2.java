@@ -19,7 +19,7 @@
  * @see http://LanDenLabs.com/
  */
 
-package com.landenlabs.routes.ui;
+package landenlabs.routes.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -44,7 +44,8 @@ import android.widget.TextView;
 
 import androidx.annotation.MainThread;
 
-import com.landenlabs.routes.R;
+
+import landenlabs.routes.R;
 
 import java.util.ArrayList;
 

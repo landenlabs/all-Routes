@@ -3,13 +3,13 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes;
+package landenlabs.routes;
 
-import static com.landenlabs.routes.utils.DataUtils.getString1x;
-import static com.landenlabs.routes.utils.SysUtils.getAppVersion;
-import static com.landenlabs.routes.utils.SysUtils.getNavController;
-import static com.landenlabs.routes.utils.UtilSpan.SSBold;
-import static com.landenlabs.routes.utils.UtilSpan.SSJoin;
+import static landenlabs.routes.utils.DataUtils.getString1x;
+import static landenlabs.routes.utils.SysUtils.getAppVersion;
+import static landenlabs.routes.utils.SysUtils.getNavController;
+import static landenlabs.routes.utils.UtilSpan.SSBold;
+import static landenlabs.routes.utils.UtilSpan.SSJoin;
 
 import android.Manifest;
 import android.content.Intent;
@@ -46,10 +46,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.perf.metrics.Trace;
-import com.landenlabs.routes.databinding.ActivityMainBinding;
-import com.landenlabs.routes.logger.Externals;
-import com.landenlabs.routes.pages.PageViewModel;
-import com.landenlabs.routes.utils.CatchAppExceptions;
+import landenlabs.routes.databinding.ActivityMainBinding;
+import landenlabs.routes.logger.Externals;
+import landenlabs.routes.pages.PageViewModel;
+import landenlabs.routes.utils.CatchAppExceptions;
 import com.wsi.wxdata.WxData;
 import com.wsi.wxdata.WxDataInitializationException;
 

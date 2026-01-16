@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageUtils;
+package landenlabs.routes.pages.PageUtils;
 
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.Flow;
 import androidx.lifecycle.MutableLiveData;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.utils.Ui;
+import landenlabs.routes.R;
+import landenlabs.routes.utils.Ui;
 
 public class ToastUtils {
 

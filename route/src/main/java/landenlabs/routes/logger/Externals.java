@@ -1,4 +1,4 @@
-package com.landenlabs.routes.logger;
+package landenlabs.routes.logger;
 
 import android.app.Activity;
 import android.widget.Toast;
@@ -28,7 +28,7 @@ public class Externals {
         trace.start();  // Firebase performance monitor
 
         // Reports:
-        //    https://console.firebase.google.com/project/twc-auto-max1/crashlytics/app/android:com.landenlabs_dev.routes/issues
+        //    https://console.firebase.google.com/project/twc-auto-max1/crashlytics/app/android:landenlabs_dev.routes/issues
         // Logging:
         //    adb shell setprop log.tag.FirebaseCrashlytics DEBUG
         //    adb logcat -s FirebaseCrashlytics

@@ -3,14 +3,14 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
-import static com.landenlabs.routes.data.GpsPoint.GPS_TIME_FMT;
-import static com.landenlabs.routes.logger.Analytics.Event.PAGE_RECORDER;
-import static com.landenlabs.routes.utils.FmtTime.milliToSec;
-import static com.landenlabs.routes.utils.FmtTime.periodFmter;
-import static com.landenlabs.routes.utils.GpsUtils.getCurrentLocation;
-import static com.landenlabs.routes.utils.Ui.getColor;
+import static landenlabs.routes.data.GpsPoint.GPS_TIME_FMT;
+import static landenlabs.routes.logger.Analytics.Event.PAGE_RECORDER;
+import static landenlabs.routes.utils.FmtTime.milliToSec;
+import static landenlabs.routes.utils.FmtTime.periodFmter;
+import static landenlabs.routes.utils.GpsUtils.getCurrentLocation;
+import static landenlabs.routes.utils.Ui.getColor;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
@@ -33,28 +33,28 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.landenlabs.routes.GlobalHolder;
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.Record.RecordService;
-import com.landenlabs.routes.data.ArrayListEx;
-import com.landenlabs.routes.data.GpsPoint;
-import com.landenlabs.routes.data.RouteSettings;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.data.TrackCommon;
-import com.landenlabs.routes.databinding.PageRecorderFragBinding;
-import com.landenlabs.routes.events.EventAction;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.events.EventDb;
-import com.landenlabs.routes.events.EventStatus;
-import com.landenlabs.routes.events.EventTrack;
-import com.landenlabs.routes.logger.Analytics;
-import com.landenlabs.routes.map.MapMarkers;
-import com.landenlabs.routes.map.MapViewer;
-import com.landenlabs.routes.pages.PageRoutesAux.RouteAdapter;
-import com.landenlabs.routes.pages.PageRoutesAux.RouteItemHolder;
-import com.landenlabs.routes.pages.PageRoutesAux.RouteViewHelper;
-import com.landenlabs.routes.pages.PageUtils.TextStatus;
-import com.landenlabs.routes.utils.GpsUtils;
+import landenlabs.routes.GlobalHolder;
+import landenlabs.routes.R;
+import landenlabs.routes.Record.RecordService;
+import landenlabs.routes.data.ArrayListEx;
+import landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.data.TrackCommon;
+import landenlabs.routes.databinding.PageRecorderFragBinding;
+import landenlabs.routes.events.EventAction;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.events.EventDb;
+import landenlabs.routes.events.EventStatus;
+import landenlabs.routes.events.EventTrack;
+import landenlabs.routes.logger.Analytics;
+import landenlabs.routes.map.MapMarkers;
+import landenlabs.routes.map.MapViewer;
+import landenlabs.routes.pages.PageRoutesAux.RouteAdapter;
+import landenlabs.routes.pages.PageRoutesAux.RouteItemHolder;
+import landenlabs.routes.pages.PageRoutesAux.RouteViewHelper;
+import landenlabs.routes.pages.PageUtils.TextStatus;
+import landenlabs.routes.utils.GpsUtils;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.weather.pangea.model.overlay.Overlay;
 import com.weather.pangea.model.overlay.PolylinePathBuilder;

@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.logger;
+package landenlabs.routes.logger;
 
 import landenlabs.wx_lib_data.logger.ALog;
 

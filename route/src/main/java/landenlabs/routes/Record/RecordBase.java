@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.Record;
+package landenlabs.routes.Record;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.utils.SysUtils;
+import landenlabs.routes.utils.SysUtils;
 
 import landenlabs.wx_lib_data.logger.ALog;
 

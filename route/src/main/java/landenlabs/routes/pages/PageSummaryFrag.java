@@ -3,19 +3,19 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
 import static android.location.LocationManager.GPS_PROVIDER;
-import static com.landenlabs.routes.data.RouteSettings.DAY_TM_FMT;
-import static com.landenlabs.routes.data.TrackUtils.RandomInt;
-import static com.landenlabs.routes.data.TrackUtils.createRandomTrack;
-import static com.landenlabs.routes.logger.Analytics.Event.PAGE_SUMMARY;
-import static com.landenlabs.routes.utils.FmtTime.ageMilli;
-import static com.landenlabs.routes.utils.FmtTime.formatAge;
-import static com.landenlabs.routes.utils.GpsUtils.getCurrentLocation;
-import static com.landenlabs.routes.utils.GpsUtils.getGpsProvider;
-import static com.landenlabs.routes.utils.SysUtils.getLocationManager;
-import static com.landenlabs.routes.utils.SysUtils.isNetworkAvailable2;
+import static landenlabs.routes.data.RouteSettings.DAY_TM_FMT;
+import static landenlabs.routes.data.TrackUtils.RandomInt;
+import static landenlabs.routes.data.TrackUtils.createRandomTrack;
+import static landenlabs.routes.logger.Analytics.Event.PAGE_SUMMARY;
+import static landenlabs.routes.utils.FmtTime.ageMilli;
+import static landenlabs.routes.utils.FmtTime.formatAge;
+import static landenlabs.routes.utils.GpsUtils.getCurrentLocation;
+import static landenlabs.routes.utils.GpsUtils.getGpsProvider;
+import static landenlabs.routes.utils.SysUtils.getLocationManager;
+import static landenlabs.routes.utils.SysUtils.isNetworkAvailable2;
 
 import android.Manifest;
 import android.content.Intent;
@@ -40,15 +40,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.Record.RecordService;
-import com.landenlabs.routes.data.GpsPoint;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.databinding.PageSummaryFragBinding;
-import com.landenlabs.routes.events.EventBase;
-import com.landenlabs.routes.logger.Analytics;
-import com.landenlabs.routes.pages.PageUtils.ToastUtils;
-import com.landenlabs.routes.utils.UnitSpeed;
+import landenlabs.routes.R;
+import landenlabs.routes.Record.RecordService;
+import landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.databinding.PageSummaryFragBinding;
+import landenlabs.routes.events.EventBase;
+import landenlabs.routes.logger.Analytics;
+import landenlabs.routes.pages.PageUtils.ToastUtils;
+import landenlabs.routes.utils.UnitSpeed;
 
 import org.joda.time.DateTime;
 

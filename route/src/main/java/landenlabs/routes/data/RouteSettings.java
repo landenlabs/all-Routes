@@ -3,11 +3,11 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.data;
+package landenlabs.routes.data;
 
 
 
-import static com.landenlabs.routes.utils.PrefUtil.getSharedPref2;
+import static landenlabs.routes.utils.PrefUtil.getSharedPref2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,7 +17,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.location.Priority;
-import com.landenlabs.routes.GlobalHolder;
+import landenlabs.routes.GlobalHolder;
 import com.weather.pangea.model.overlay.StrokeStyle;
 import com.weather.pangea.model.overlay.StrokeStyleBuilder;
 

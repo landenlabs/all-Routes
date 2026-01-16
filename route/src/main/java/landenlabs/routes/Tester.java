@@ -3,18 +3,18 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes;
+package landenlabs.routes;
 
 import android.app.Activity;
 import android.content.Context;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import com.landenlabs.routes.data.ArrayGps;
-import com.landenlabs.routes.data.GpsPoint;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.db.FirebaseCloud;
-import com.landenlabs.routes.db.SqlDb;
+import landenlabs.routes.data.ArrayGps;
+import landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.db.FirebaseCloud;
+import landenlabs.routes.db.SqlDb;
 
 import landenlabs.wx_lib_data.logger.ALog;
 

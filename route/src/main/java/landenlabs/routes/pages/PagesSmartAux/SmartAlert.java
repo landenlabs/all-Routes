@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PagesSmartAux;
+package landenlabs.routes.pages.PagesSmartAux;
 
-import static com.landenlabs.routes.utils.FmtTime.getNearest;
+import static landenlabs.routes.utils.FmtTime.getNearest;
 
 import android.content.Context;
 
@@ -13,9 +13,9 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.data.ArrayListEx;
-import com.landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.R;
+import landenlabs.routes.data.ArrayListEx;
+import landenlabs.routes.data.GpsPoint;
 import com.weather.pangea.model.overlay.Icon;
 import com.wsi.mapsdk.utils.DrawUtils;
 import com.wsi.mapsdk.utils.WLatLng;

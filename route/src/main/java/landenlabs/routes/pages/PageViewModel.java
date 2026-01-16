@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages;
+package landenlabs.routes.pages;
 
-import static com.landenlabs.routes.utils.SysUtils.hasRef;
+import static landenlabs.routes.utils.SysUtils.hasRef;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +18,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.NavOptions;
 
-import com.landenlabs.routes.GlobalHolder;
-import com.landenlabs.routes.R;
+import landenlabs.routes.GlobalHolder;
+import landenlabs.routes.R;
 
 import java.lang.ref.WeakReference;
 

@@ -19,14 +19,14 @@
  * @see http://LanDenLabs.com/
  */
 
-package com.landenlabs.routes.ui;
+package landenlabs.routes.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.NumberPicker;
 
-import com.landenlabs.routes.R;
+import landenlabs.routes.R;
 
 @SuppressWarnings("SameParameterValue")
 public class Picker1 extends NumberPicker {

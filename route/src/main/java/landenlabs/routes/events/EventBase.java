@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.events;
+package landenlabs.routes.events;
 
 /**
  * Abstract base class of Event family of classes, such as:

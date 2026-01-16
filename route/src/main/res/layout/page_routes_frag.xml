@@ -107,7 +107,7 @@
         app:barrierDirection="top"
         />
 
-    <com.landenlabs.routes.map.MapViewer
+    <landenlabs.routes.map.MapViewer
         android:background="@drawable/bg_rect_border"
         android:id="@+id/map_viewer"
         android:layout_width="0dp"

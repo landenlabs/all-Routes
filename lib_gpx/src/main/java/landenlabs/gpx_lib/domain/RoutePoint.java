@@ -1,4 +1,4 @@
-package com.landenlabs.gpx_lib.domain;
+package landenlabs.gpx_lib.domain;
 
 /**
  * A route point (rtept) element.

@@ -3,10 +3,10 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageRoutesAux;
+package landenlabs.routes.pages.PageRoutesAux;
 
-import static com.landenlabs.routes.utils.FmtTime.fmtDuration;
-import static com.landenlabs.routes.utils.SysUtils.joinCS;
+import static landenlabs.routes.utils.FmtTime.fmtDuration;
+import static landenlabs.routes.utils.SysUtils.joinCS;
 
 import android.content.Context;
 import android.view.ContextThemeWrapper;
@@ -20,13 +20,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.landenlabs.routes.R;
-import com.landenlabs.routes.data.GpsPoint;
-import com.landenlabs.routes.data.Track;
-import com.landenlabs.routes.data.Trip;
-import com.landenlabs.routes.utils.Ui;
-import com.landenlabs.routes.utils.UnitDistance;
-import com.landenlabs.routes.utils.UnitSpeed;
+import landenlabs.routes.R;
+import landenlabs.routes.data.GpsPoint;
+import landenlabs.routes.data.Track;
+import landenlabs.routes.data.Trip;
+import landenlabs.routes.utils.Ui;
+import landenlabs.routes.utils.UnitDistance;
+import landenlabs.routes.utils.UnitSpeed;
 
 import org.joda.time.DateTime;
 

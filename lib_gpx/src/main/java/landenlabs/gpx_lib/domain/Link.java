@@ -1,4 +1,4 @@
-package com.landenlabs.gpx_lib.domain;
+package landenlabs.gpx_lib.domain;
 
 /**
  * Created by Stu Stirling on 04/10/2017.

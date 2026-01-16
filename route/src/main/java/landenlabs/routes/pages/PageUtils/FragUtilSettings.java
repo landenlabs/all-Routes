@@ -3,9 +3,9 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageUtils;
+package landenlabs.routes.pages.PageUtils;
 
-import static com.landenlabs.routes.utils.Ui.layoutFromStyle;
+import static landenlabs.routes.utils.Ui.layoutFromStyle;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -23,7 +23,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 
-import com.landenlabs.routes.R;
+import landenlabs.routes.R;
 
 import java.util.Locale;
 

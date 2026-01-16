@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.landenlabs.routes">
+    xmlns:tools="http://schemas.android.com/tools" >
 
 
     <!-- Service -->
@@ -33,7 +32,7 @@
         tools:targetApi="s">
 
         <activity
-            android:name="com.landenlabs.routes.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppTheme.NoActionBar"  >
 
@@ -44,13 +43,13 @@
         </activity>
 
         <!-- https://developer.android.com/develop/background-work/services/fg-service-types#location -->
-        <service android:name="com.landenlabs.routes.Record.RecordService"
+        <service android:name=".Record.RecordService"
             android:foregroundServiceType="location"
             android:exported="false"
             />
 
         <receiver
-            android:name="com.landenlabs.routes.Record.RecordCancel"
+            android:name=".Record.RecordCancel"
             android:exported="true" >
         </receiver>
 

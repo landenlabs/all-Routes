@@ -3,12 +3,12 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.events;
+package landenlabs.routes.events;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.landenlabs.routes.pages.PagesSmartAux.SmartAlert;
+import landenlabs.routes.pages.PagesSmartAux.SmartAlert;
 
 import java.util.Locale;
 

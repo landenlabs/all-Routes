@@ -3,7 +3,7 @@
  * Copyright LanDenLabs 2025
  */
 
-package com.landenlabs.routes.pages.PageRoutesAux;
+package landenlabs.routes.pages.PageRoutesAux;
 
 import android.content.Context;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 
-import com.landenlabs.routes.R;
+import landenlabs.routes.R;
 
 import java.util.HashSet;
 import java.util.Set;
