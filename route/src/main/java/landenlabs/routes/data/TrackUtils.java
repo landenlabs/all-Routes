@@ -13,13 +13,13 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
-import com.wsi.mapsdk.utils.WLatLng;
 
 import org.joda.time.DateTime;
 
 import java.util.Comparator;
 import java.util.Stack;
 
+import landenlabs.wx_lib_data.location.WLatLng;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /**

@@ -10,11 +10,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import landenlabs.routes.R;
-import com.wsi.mapsdk.map.WSIMap;
-import com.wsi.mapsdk.markers.WSIMarkerView;
-import com.wsi.mapsdk.markers.WSIMarkerViewOptions;
-import com.wsi.mapsdk.utils.DrawUtils;
-import com.wsi.mapsdk.utils.WLatLng;
+
 
 import java.util.HashMap;
 import java.util.Map;

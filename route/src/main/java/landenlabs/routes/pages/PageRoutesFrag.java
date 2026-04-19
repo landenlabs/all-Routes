@@ -46,11 +46,7 @@ import landenlabs.routes.pages.PageRoutesAux.RouteAdapter;
 import landenlabs.routes.pages.PageRoutesAux.RouteItemHolder;
 import landenlabs.routes.pages.PageRoutesAux.RouteViewHelper;
 import landenlabs.routes.pages.PageUtils.ToastUtils;
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.weather.pangea.event.MapLongTouchEvent;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
-import com.wsi.mapsdk.utils.WLatLng;
+
 
 import org.joda.time.DateTime;
 
@@ -59,6 +55,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
+import landenlabs.wx_lib_data.location.WLatLng;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /**

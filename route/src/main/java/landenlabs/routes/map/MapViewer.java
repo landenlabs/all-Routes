@@ -21,39 +21,17 @@ import android.widget.Toast;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.helper.widget.Layer;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleObserver;
 
+import com.google.common.eventbus.Subscribe;
+import com.wsi.wxdata.ObjUtils;
+
 import landenlabs.routes.R;
 import landenlabs.routes.logger.AppLog;
-import com.weather.pangea.event.MapLongTouchEvent;
-import com.weather.pangea.layer.Layer;
-import com.weather.pangea.layer.overlay.SimpleOverlayLayer;
-import com.wsi.mapsdk.InventoryOverlay;
-import com.wsi.mapsdk.log.MLog;
-import com.wsi.mapsdk.map.OnWSIMapViewReadyCallback;
-import com.wsi.mapsdk.map.WSIMap;
-import com.wsi.mapsdk.map.WSIMapCalloutInfoList;
-import com.wsi.mapsdk.map.WSIMapDelegate;
-import com.wsi.mapsdk.map.WSIMapGeoOverlay;
-import com.wsi.mapsdk.map.WSIMapOptions;
-import com.wsi.mapsdk.map.WSIMapRasterLayer;
-import com.wsi.mapsdk.map.WSIMapRasterLayerDataDisplayMode;
-import com.wsi.mapsdk.map.WSIMapRasterLayerTimeDisplayMode;
-import com.wsi.mapsdk.map.WSIMapSelectMode;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
-import com.wsi.mapsdk.map.WSIMapViewDelegate;
-import com.wsi.mapsdk.map.WSIRasterLayerLoopTimes;
-import com.wsi.mapsdk.markers.WSIMarkerView;
-import com.wsi.mapsdk.markers.WSIMarkerViewOptions;
-import com.wsi.mapsdk.utils.DrawUtils;
-import com.wsi.mapsdk.utils.ObjUtils;
-import com.wsi.mapsdk.utils.WCameraPosition;
-import com.wsi.mapsdk.utils.WLatLng;
-import com.wsi.mapsdk.utils.WLatLngBounds;
 
-import org.greenrobot.eventbus.Subscribe;
+
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
@@ -64,6 +42,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import landenlabs.wx_lib_data.location.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /**

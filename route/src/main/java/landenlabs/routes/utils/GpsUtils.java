@@ -22,14 +22,16 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
+import com.google.type.LatLng;
+
 import landenlabs.routes.data.GpsPoint;
-import com.weather.pangea.geom.LatLng;
-import com.wsi.mapsdk.utils.WLatLng;
-import com.wsi.mapsdk.utils.WLatLngBounds;
+
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import landenlabs.wx_lib_data.location.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /*

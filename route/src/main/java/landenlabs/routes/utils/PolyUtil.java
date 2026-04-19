@@ -8,23 +8,24 @@ package landenlabs.routes.utils;
 import static landenlabs.routes.utils.GpsUtils.metersBetween;
 import static java.lang.Math.toRadians;
 
-import com.wsi.mapsdk.utils.WLatLng;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import landenlabs.wx_lib_data.location.WLatLng;
+
 /**
  * Collection of GIS utility methods.
  * <p>
  * From Google  map GIS library
- * https://github.com/googlemaps/android-maps-utils
- * https://developers.google.com/maps/documentation/javascript/reference/geometry
+ * https: //github.com/googlemaps/android-maps-utils
+ * https: //developers.google.com/maps/documentation/javascript/reference/geometry
  * <p>
- * https://github.com/googlemaps/android-maps-utils/blob/main/library/src/main/java/com/google/maps/android/SphericalUtil.java
+ * https: //github.com/googlemaps/android-maps-utils/blob/main/library/src/main/java/com/google/maps/android/SphericalUtil.java
  * <p>
  * Apache 2.0 license
- * https://github.com/googlemaps/android-maps-utils/blob/main/LICENSE
+ * https: //github.com/googlemaps/android-maps-utils/blob/main/LICENSE
  */
 public class PolyUtil {
 

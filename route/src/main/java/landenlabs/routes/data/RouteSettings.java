@@ -17,9 +17,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.location.Priority;
-import landenlabs.routes.GlobalHolder;
-import com.weather.pangea.model.overlay.StrokeStyle;
-import com.weather.pangea.model.overlay.StrokeStyleBuilder;
 
 import java.util.Arrays;
 import java.util.List;

@@ -55,16 +55,12 @@ import landenlabs.routes.pages.PageRoutesAux.RouteItemHolder;
 import landenlabs.routes.pages.PageRoutesAux.RouteViewHelper;
 import landenlabs.routes.pages.PageUtils.TextStatus;
 import landenlabs.routes.utils.GpsUtils;
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.weather.pangea.model.overlay.Overlay;
-import com.weather.pangea.model.overlay.PolylinePathBuilder;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
-import com.wsi.mapsdk.utils.WLatLng;
-import com.wsi.mapsdk.utils.WLatLngBounds;
+
 
 import org.joda.time.DateTime;
 
+import landenlabs.wx_lib_data.location.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /**

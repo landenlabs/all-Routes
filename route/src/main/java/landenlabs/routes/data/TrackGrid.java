@@ -16,11 +16,11 @@ import androidx.annotation.Nullable;
 import landenlabs.routes.db.SqlDb;
 import landenlabs.routes.events.EventBase;
 import landenlabs.routes.events.EventStatus;
-import com.wsi.mapsdk.utils.WLatLng;
 
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
+import landenlabs.wx_lib_data.location.WLatLng;
 import landenlabs.wx_lib_data.logger.ALog;
 
 /**

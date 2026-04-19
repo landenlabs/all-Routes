@@ -28,6 +28,7 @@ dependencyResolutionManagement {
             dirs 'libs'
         }
 
+        /*
         maven {
             name = 'weatherRepo'
             url = 'https://android-repo.media.weather.com/MobileMapSDK/Maven'
@@ -43,6 +44,7 @@ dependencyResolutionManagement {
             }
             url = "https://repo.artifacts.weather.com/artifactory/pangea-mobile-kotlin-local"
         }
+         */
     }
 }
 rootProject.name = "all-Routes"

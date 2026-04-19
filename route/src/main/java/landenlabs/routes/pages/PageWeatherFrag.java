@@ -58,15 +58,6 @@ import landenlabs.routes.utils.GpsUtils;
 import landenlabs.routes.utils.UnitDistance;
 import landenlabs.routes.utils.UnitSpeed;
 import landenlabs.routes.utils.UnitTemperature;
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.weather.pangea.event.MapLongTouchEvent;
-import com.weather.pangea.model.overlay.Overlay;
-import com.weather.pangea.model.overlay.PolylinePathBuilder;
-import com.wsi.mapsdk.map.WSIMapSelectMode;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
-import com.wsi.mapsdk.utils.WLatLng;
-import com.wsi.mapsdk.utils.WLatLngBounds;
 import com.wsi.wxdata.WxTime;
 
 import org.joda.time.DateTime;
@@ -74,6 +65,8 @@ import org.joda.time.DateTime;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import landenlabs.wx_lib_data.location.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.location.WxLocationEx;
 import landenlabs.wx_lib_data.logger.ALog;
 import landenlabs.wx_lib_data.utils.UtilStr;

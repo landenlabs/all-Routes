@@ -10,12 +10,13 @@ import android.location.LocationManager;
 
 import androidx.annotation.NonNull;
 
-import com.weather.pangea.util.measurements.SpeedUnit;
-import com.wsi.mapsdk.utils.WLatLng;
+
 
 import org.joda.time.DateTime;
 
 import java.util.Locale;
+
+import landenlabs.wx_lib_data.location.WLatLng;
 
 /*
  * Latitude/Longitude accuracy

@@ -14,9 +14,10 @@ import androidx.annotation.Nullable;
 
 import landenlabs.routes.utils.UnitDistance;
 import landenlabs.routes.utils.UnitSpeed;
-import com.weather.pangea.geom.Polyline;
-import com.wsi.mapsdk.utils.WLatLng;
-import com.wsi.mapsdk.utils.WLatLngBounds;
+import landenlabs.wx_lib_data.location.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLngBounds;
+
+import com.wsi.wxdata.WxLocation;
 
 import org.joda.time.DateTime;
 

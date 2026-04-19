@@ -10,27 +10,21 @@ import android.util.SparseArray;
 
 import androidx.lifecycle.LifecycleOwner;
 
+import com.google.type.LatLng;
+
 import landenlabs.routes.data.LiveQueue;
 import landenlabs.routes.data.RouteSettings;
 import landenlabs.routes.data.Track;
 import landenlabs.routes.data.TrackGrid;
 import landenlabs.routes.data.TrackIdList;
 import landenlabs.routes.utils.GpsUtils;
-import com.weather.pangea.geom.LatLng;
-import com.weather.pangea.geom.Polygon;
-import com.weather.pangea.geom.Polyline;
-import com.weather.pangea.model.overlay.FillStyle;
-import com.weather.pangea.model.overlay.FillStyleBuilder;
-import com.weather.pangea.model.overlay.Overlay;
-import com.weather.pangea.model.overlay.PolygonPathBuilder;
-import com.weather.pangea.model.overlay.PolylinePathBuilder;
-import com.weather.pangea.model.overlay.StrokeStyle;
-import com.wsi.mapsdk.utils.WLatLngBounds;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.logger.ALog;
 
 

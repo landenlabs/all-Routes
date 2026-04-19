@@ -162,6 +162,7 @@ dependencies {
     implementation project(path: ':lib_data')
     // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
 
+    /*
     // implementation "com.wsi.mapsdk:mapsdk:$versions.mapSdkV1"
     // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
     // implementation(name: 'mapsdk', ext: 'aar')
@@ -169,6 +170,7 @@ dependencies {
     api(name: "mapsdk", ext: 'aar', version: "$versions.mapSdkV1",  group: 'mapsdk')
     // Using Maven repo Pangea
     api("com.weather.pangea.android:pangeamapbox:$versions.pangea4")
+    */
     implementation 'androidx.security:security-crypto:1.1.0'
 
     def navVer = "2.9.7"

@@ -11,7 +11,7 @@ import static landenlabs.routes.utils.GpsUtils.metersBetween;
 import androidx.annotation.NonNull;
 
 import landenlabs.routes.data.GpsPoint;
-import com.wsi.mapsdk.utils.WLatLng;
+import landenlabs.wx_lib_data.location.WLatLng;
 
 /**
  * ToDo -move into single GPS/GIS/Util class
