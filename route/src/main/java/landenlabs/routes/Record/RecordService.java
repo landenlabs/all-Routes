@@ -1,7 +1,7 @@
 
 /*
  * Dennis Lang - LanDenLabs.com
- * Copyright LanDenLabs 2025
+ * Copyright (c) 2026 Dennis Lang (LanDen Labs)
  */
 
 package landenlabs.routes.Record;
