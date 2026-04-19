@@ -7,8 +7,11 @@ pluginManagement {
 }
 
 // Load Gradle credentials
+def propFile = file("twc_credentials_sign.properties")
 ext.twc_sign_props = new Properties()
-file("twc_credentials_sign.properties").withInputStream { twc_sign_props.load(it) }
+if (propFile.exists()) {
+    propFile.withInputStream { twc_sign_props.load(it) }
+}
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -19,9 +22,6 @@ dependencyResolutionManagement {
         maven {
             name = 'localMaven'
             url = "libs/maven_repo/"
-            // url file('mavenRepo')
-            // println "Add local repo=${url}"
-            // javadocDir
         }
 
         flatDir {
@@ -33,12 +33,13 @@ dependencyResolutionManagement {
             url = 'https://android-repo.media.weather.com/MobileMapSDK/Maven'
         }
 
-        // Provide Pangea files required for map  tiles.
+        // Provide Pangea files required for map tiles.
         maven {
             name = "Pangea"
             credentials {
-                username = twc_sign_props.PANGEA_MAVEN_USER
-                password = twc_sign_props.PANGEA_MAVEN_PWD
+                // Fallback to environment variables for GitHub Actions
+                username = twc_sign_props.PANGEA_MAVEN_USER ?: System.getenv("PANGEA_MAVEN_USER")
+                password = twc_sign_props.PANGEA_MAVEN_PWD ?: System.getenv("PANGEA_MAVEN_PWD")
             }
             url = "https://repo.artifacts.weather.com/artifactory/pangea-mobile-kotlin-local"
         }

@@ -36,8 +36,12 @@ ext.cpuTypes = ['armeabi-v7a', 'arm64-v8a',  'x86_64']
 
 // Load Gradle credentials
 ext.twc_sign_props = new Properties()
-file("${project.rootDir}/twc_credentials_sign.properties").withInputStream { twc_sign_props.load(it) }
-ext.releasekeyfile = "${project.rootDir}/assets/sign/${twc_sign_props.RELEASE_KEY_STORE_FILE}"
+def propFile = file("${project.rootDir}/twc_credentials_sign.properties")
+if (propFile.exists()) {
+    propFile.withInputStream { twc_sign_props.load(it) }
+}
+
+ext.releasekeyfile = "${project.rootDir}/assets/sign/${twc_sign_props.RELEASE_KEY_STORE_FILE ?: 'release.keystore'}"
 ext.debugkeyfile = "${project.rootDir}/assets/sign/twc_debug.jks"
 
 
