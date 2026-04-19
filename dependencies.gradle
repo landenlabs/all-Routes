@@ -2,12 +2,12 @@
 // Project dependencies to keep all modules in sync.
 
 // println "=========== dependencies included ============= for " + project.projectDir.path
-def appVersion  = "1.2.6"
-def appVernCode = 1002006    // this represents 1 or more digits for major, 3 digits for minor and patch
+def appVersion  = "6.04.19"  // 2026 April(04) 19th
+def appVernCode = 604019    // this represents 1 or more digits for major, 2 for minor and 3 patch
         
 ext.versions = [
-    targetSdk       : 35,
-    compileSdk      : 35,
+    targetSdk       : 36,
+    compileSdk      : 36,
     minSdk          : 28,
 
     // TODO - switch from old MapSDK to new MapSDK.
@@ -22,10 +22,10 @@ ext.versions = [
     sdkVersion      : appVersion,
     sdkVernCode     : appVernCode,
 
-    appcompat       : "1.7.0",      // https://developer.android.com/jetpack/androidx/releases/appcompat
-    material        : "1.12.0",
+    appcompat       : "1.7.1",      // https://developer.android.com/jetpack/androidx/releases/appcompat
+    material        : "1.13.0",
     annotation      : "1.9.1",
-    work            : "2.10.1",      // https://androidx.tech/artifacts/work/work-runtime/
+    work            : "2.11.2",      // https://androidx.tech/artifacts/work/work-runtime/
 ]
 
 // Limit languages to following list. Also look at 'resConfig' and 'resourceConfigurations'

@@ -1,4 +1,10 @@
 # all-route (EXPERIMENT - NOT DONE YET)
+<br>18-Arp-2026
+<br>API 36 AndroidX Java
+<br>[Home website](https://landenlabs.com/android/index.html)
+
+<img src="screens/landenlabs.webp" width="300" alt="Logo">
+
 Android Route Recorder App
 
 Demo app to experiment with recording and comparing routes to automatically

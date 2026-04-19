@@ -10,12 +10,42 @@ buildscript {
 }
 
 plugins {
-    // gradleVer in gradle.properties
-    id 'com.android.application' version "8.13.1" apply false
-    id 'com.android.library' version "8.13.1" apply false
-    id 'org.jetbrains.kotlin.android' version "2.2.21" apply false
+    id 'com.android.application' version '9.1.1' apply false
+    id 'com.android.library' version '9.1.1' apply false
+    id 'org.jetbrains.kotlin.android' version '2.3.20' apply false
 }
 
 tasks.register('clean', Delete) {
     delete layout.buildDirectory
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                compileOptions {
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
+                }
+
+                // In AGP 9.0+, Kotlin support is built-in and detected via source sets.
+                // We can configure kotlinOptions if the plugin was applied or if it's a Kotlin project.
+                try {
+                    kotlinOptions {
+                        jvmTarget = "17"
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        
+        // Apply toolchain if the java plugin is present (includes Android)
+        if (project.plugins.hasPlugin('java') || project.hasProperty('android')) {
+            java {
+                toolchain {
+                    languageVersion = JavaLanguageVersion.of(17)
+                }
+            }
+        }
+    }
 }
