@@ -9,7 +9,7 @@ import android.content.Context;
 import android.location.Geocoder;
 import android.view.View;
 
-import com.wsi.mapsdk.map.WSIMap;
+import com.weather.mapsdk.TWCMapView;
 
 import java.util.Locale;
 
@@ -35,8 +35,8 @@ public class GeoUtils {
     private final String mapApiKey; // getString(R.string.google_maps_key)
     private final Geocoder mGeocoder;
 
-    private final WSIMap mMap;
-    public GeoUtils(Context context, View mapHolder, WSIMap gMap, String mapApiKey) {
+    private final TWCMapView mMap;
+    public GeoUtils(Context context, View mapHolder, TWCMapView gMap, String mapApiKey) {
         this.mapHolder = mapHolder;
         this.mMap = gMap;
         this.mapApiKey = mapApiKey;

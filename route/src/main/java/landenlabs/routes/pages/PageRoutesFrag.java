@@ -27,10 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.weather.pangea.event.MapLongTouchEvent;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
+import com.weather.mapsdk.interfaces.TWCMapTouch;
 
 import landenlabs.routes.R;
 import landenlabs.routes.data.ArrayListEx;
@@ -68,7 +65,6 @@ import landenlabs.wx_lib_data.logger.ALog;
  */
 @SuppressWarnings("FieldCanBeLocal")
 public class PageRoutesFrag extends PageBaseFrag implements View.OnClickListener
-        , MapView.OnCameraDidChangeListener
         , MapViewer.OnWSIMapViewChangedCallback
         , MapViewer.MapLongTouchListener {
 
@@ -124,7 +120,6 @@ public class PageRoutesFrag extends PageBaseFrag implements View.OnClickListener
     @Override
     public void onPause() {
         binding.mapViewer.removeOnMapChangedCallback(this);         //  onMapReady()
-        binding.mapViewer.removeOnCameraDidChangeListener(this);    //  onCameraDidChange()
         getGlobal().removeEventListener(this.getClass().getSimpleName());
         super.onPause();
     }
@@ -214,12 +209,11 @@ public class PageRoutesFrag extends PageBaseFrag implements View.OnClickListener
             @NonNull TrackGrid trackGrid) {
         if (showDelete
                 || !binding.routeShowMap.isChecked()
-                || !binding.mapViewer.isReady()
-                || binding.mapViewer.getTopLayer() == null)
+                || !binding.mapViewer.isReady())
             return;
 
         mapTracks = MapTracks.create(mapTracks, binding.mapViewer, trackGrid, getViewLifecycleOwner());
-        mapMarkers  = new MapMarkers(requireContext(), binding.mapViewer.getWSIMap());
+        mapMarkers  = new MapMarkers(requireContext(), binding.mapViewer);
 
         // WLatLngBounds bounds = null;
         for (int idx : selectedSet) {
@@ -327,46 +321,34 @@ public class PageRoutesFrag extends PageBaseFrag implements View.OnClickListener
     // MapView
 
     private void authorizeMap() {
-        if (!WSIMapView.isAuthorized()) {
+        if (!MapViewer.isMapSdkAuthorized()) {
             ALog.d.tagMsg(this, "Authorize map");
             MapViewer.initBeforeCreate(requireContext());
         }
     }
 
     private void initMap(MapViewer mapView) {
-        String mapName = mapView.getTag().toString();
-        mapView.getWSIMap().setMapType(WSIMapType.LIGHT);
+        mapView.startInit();
         mapView.addOnMapChangedCallback(this);  // onMapReady()
-
-        // "RadarSmooth";  // twcRadarMossaic + radarFcst
-        String rasterName = "NoRaster";
-        if (!mapView.setRasterLayer(rasterName))
-            ALog.w.tagMsg(mapName, "Failed to set map raster layer " + rasterName);
-        if (!mapView.setOverlayLayers(null))
-            ALog.w.tagMsg(mapName, "Failed to set map overlay layers ");
-
-        MapViewer.setTimeline(DateTime.now(), mapView);
-        mapView.addOnCameraDidChangeListener(this);        // onCameraDidChange()
     }
 
     @Override
-    public void onMapReady(WSIMapView wsiMapView, int why) {
+    public void onMapReady(MapViewer mapViewer, int why) {
         if (why == MAP_STATE_READY) {
+            mapViewer.showRadar(false);
+            mapViewer.setTimeline(DateTime.now());
+
             Location location = getCurrentLocation(requireActivity());
             if (location != null) {
                 binding.mapViewer.setCamera(new WLatLng(location.getLatitude(), location.getLongitude()), 13, true, 1.0f);
             }
+            refreshUi();
         }
-        refreshUi();
-    }
-    @Override
-    public void onCameraDidChange(boolean animated) {
-       //  refreshUi();  causes circular code loop.
     }
 
     @Override
-    public void onLongTouch(MapViewer mapViewer, MapLongTouchEvent event) {
-        WLatLng latLng = toWLatLng(event.getCenterLatLng());
+    public void onLongTouch(MapViewer mapViewer, TWCMapTouch touch) {
+        WLatLng latLng = toWLatLng(touch.getGeoPoint());
         String locStr = String.format(Locale.US, "%.3f,%.3f", latLng.latitude, latLng.longitude);
         // ClipData clip = ClipData.newPlainText("label", locStr);
         // ClipboardManager clipboard = (ClipboardManager) mapViewer.getContext().getSystemService(Context.CLIPBOARD_SERVICE);

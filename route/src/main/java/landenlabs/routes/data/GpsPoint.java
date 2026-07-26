@@ -10,7 +10,7 @@ import android.location.LocationManager;
 
 import androidx.annotation.NonNull;
 
-import com.weather.pangea.util.measurements.SpeedUnit;
+import com.weather.pangea.data.SpeedUnit;
 
 import org.joda.time.DateTime;
 

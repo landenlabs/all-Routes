@@ -255,9 +255,9 @@ public class PageDevFrag extends PageBaseFrag implements View.OnClickListener {
         addRow(card, "AppVern", getAppVersion(requireContext()));
         addRow(card, "Package", requireContext().getPackageName());
 
-        // addRow(card, "MapSDK", getString(R.string.mapsdk_version));
-        addRow(card, "Pangea", com.weather.pangea.BuildConfig.PANGEA_VERSION_NAME);
-        addRow(card, "Mapbox", com.mapbox.mapboxsdk.BuildConfig.MAPBOX_VERSION_STRING);
+        // Pangea 5.x kotlin artifacts don't publish a runtime BuildConfig version constant.
+        addRow(card, "Pangea", "5.11.1");
+        addRow(card, "MapSDK", "6.7.20");
 
         addRow(card, "Java", getString(R.string.routes_javaVersion));
         addRow(card, "Compile", getString(R.string.routes_compileSdkVersion)); // requireContext().getApplicationInfo().compileSdkVersionCodename)

@@ -43,7 +43,10 @@ subprojects {
         if (project.plugins.hasPlugin('java') || project.hasProperty('android')) {
             java {
                 toolchain {
-                    languageVersion = JavaLanguageVersion.of(17)
+                    // Pangea 5 ships some artifacts compiled with a JDK 21 target (class file
+                    // version 65) - javac itself must run on JDK 21+ to read them, even though
+                    // we still emit Java 17 bytecode via sourceCompatibility/targetCompatibility above.
+                    languageVersion = JavaLanguageVersion.of(21)
                 }
             }
         }

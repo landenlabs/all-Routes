@@ -33,13 +33,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.weather.pangea.event.MapLongTouchEvent;
-import com.weather.pangea.model.overlay.Overlay;
-import com.weather.pangea.model.overlay.PolylinePathBuilder;
-import com.wsi.mapsdk.map.WSIMapType;
-import com.wsi.mapsdk.map.WSIMapView;
-
 import landenlabs.routes.GlobalHolder;
 import landenlabs.routes.R;
 import landenlabs.routes.Record.RecordService;
@@ -77,10 +70,10 @@ import landenlabs.wx_lib_data.logger.ALog;
 public class PageRecorderFrag extends PageBaseFrag implements
         View.OnClickListener
         , View.OnLongClickListener
-        , MapViewer.OnWSIMapViewChangedCallback
-        , MapView.OnCameraDidChangeListener {
+        , MapViewer.OnWSIMapViewChangedCallback {
 
     private static final int MAP_ZOOM_STREET_LEVEL = 14;
+    private static final String ROUTE_OVERLAY_ID = "route";
 
     private PageRecorderFragBinding binding;
     private TextStatus textStatus;
@@ -112,7 +105,6 @@ public class PageRecorderFrag extends PageBaseFrag implements
         clearMapLayers();
         getGlobal().removeEventListener(this.getClass().getSimpleName());
         binding.mapViewer.removeOnMapChangedCallback(this);         //  onMapReady()
-        binding.mapViewer.removeOnCameraDidChangeListener(this);    //  onCameraDidChange()
         markers = null;
         binding.recProgress.removeCallbacks(updateProgress);
         super.onPause();
@@ -188,7 +180,7 @@ public class PageRecorderFrag extends PageBaseFrag implements
 
     private void setMap() {
         if (markers == null && binding.mapViewer.isReady()) {
-            markers = new MapMarkers(requireContext(), binding.mapViewer.getWSIMap());
+            markers = new MapMarkers(requireContext(), binding.mapViewer);
         }
     }
 
@@ -197,7 +189,7 @@ public class PageRecorderFrag extends PageBaseFrag implements
             return;
 
         if (RecordService.isRecording()) {
-            binding.mapViewer.clearMarkers();
+            binding.mapViewer.clearPinMarkers();
         }
 
         int pntCnt = track.getPointCnt();
@@ -236,7 +228,6 @@ public class PageRecorderFrag extends PageBaseFrag implements
         refreshCamera(isChecked(binding.btnCenterCamera));
     }
     private void refreshCamera(boolean centerOnCurrent) {
-        binding.mapViewer.getWSIMap().setMapType(WSIMapType.LIGHT);
         if (centerOnCurrent || track.getPointCnt() < 2) {
             Location location = getCurrentLocation(requireActivity());
 
@@ -260,20 +251,13 @@ public class PageRecorderFrag extends PageBaseFrag implements
         }
     }
 
-    private Overlay routeOverlay = null;
     private void drawRouteOnMap() {
         synchronized (track) {
-   //         binding.mapViewer.getTopLayer().clearOverlays();
-            if (routeOverlay != null) {
-                binding.mapViewer.getTopLayer().removeOverlay(routeOverlay);
-            }
+            binding.mapViewer.removeMarkerPolyline(ROUTE_OVERLAY_ID);
             if (track.getPointCnt() > 1) {
-                routeOverlay  = new PolylinePathBuilder()
-                        .setPolyLine(track.toPolyline())
-                        .setStrokeStyle(RouteSettings.lineStyleStd)
-                        .build();
-
-                binding.mapViewer.getTopLayer().addOverlay(routeOverlay);
+                RouteSettings.LineStyle style = RouteSettings.lineStyleStd;
+                binding.mapViewer.addMarkerPolyline(ROUTE_OVERLAY_ID, track.toLatLngList(),
+                        style.argbColor(), style.getWidth(), style.getDashPattern());
             }
         }
     }
@@ -283,9 +267,8 @@ public class PageRecorderFrag extends PageBaseFrag implements
         if (markers != null) {
             markers.clearMarkers();
         }
-        routeOverlay = null;
-        if (binding.mapViewer.isReady() && binding.mapViewer.getTopLayer() != null) {
-            binding.mapViewer.getTopLayer().clearOverlays();
+        if (binding.mapViewer.isReady()) {
+            binding.mapViewer.removeMarkerPolyline(ROUTE_OVERLAY_ID);
         }
         refresh();
     }
@@ -356,7 +339,7 @@ public class PageRecorderFrag extends PageBaseFrag implements
 
     public void setBtns(boolean isRecording) {  // RecordService.isRecording()
         if (isRecording) {
-            binding.mapViewer.clearMarkers();
+            binding.mapViewer.clearPinMarkers();
             binding.recData.setText("");
             binding.recStartStop.setBackgroundTintList(ColorStateList.valueOf(getColor(binding.recStartStop, R.color.bg_stop)));
             binding.recStartStop.setText("Stop");
@@ -443,7 +426,7 @@ public class PageRecorderFrag extends PageBaseFrag implements
         // float padPercent = 0.1f;
         // bounds = GpsUtils.padBounds(bounds, padPercent*2, padPercent);
         bounds = GpsUtils.padBounds(bounds,margin_h / viewHeight,  margin_w / viewWidth);
-        binding.mapViewer.setCameraBounds(bounds, 1000);
+        binding.mapViewer.setCameraBounds(bounds);
         //refresh();
     }
 
@@ -475,28 +458,15 @@ public class PageRecorderFrag extends PageBaseFrag implements
     // MapView
 
     private void authorizeMap() {
-        if (!WSIMapView.isAuthorized()) {
+        if (!MapViewer.isMapSdkAuthorized()) {
             ALog.d.tagMsg(this, "Authorize map");
             MapViewer.initBeforeCreate(requireContext());
         }
     }
 
     private void initMap(MapViewer mapView) {
-        String mapName = mapView.getTag().toString();
-        mapView.getWSIMap().setMapType(WSIMapType.LIGHT);
+        mapView.startInit();
         mapView.addOnMapChangedCallback(this);      // ::onMapReady
-
-        // "RadarSmooth";  // twcRadarMossaic + radarFcst
-        String rasterName = "NoRaster";
-        if (!mapView.setRasterLayer(rasterName))
-            ALog.w.tagMsg(mapName, "Failed to set map raster layer " + rasterName);
-        if (!mapView.setOverlayLayers(null))
-            ALog.w.tagMsg(mapName, "Failed to set map overlay layers ");
-
-        MapViewer.setTimeline(DateTime.now(), mapView);
-        // mapView.getWSIMap().updateMapOverlaysVisibility(mapView);
-        // mapView.getWSIMap().setMapOverlaysVisibility(true, true, mapView);
-        mapView.addOnCameraDidChangeListener(this);     // ::onCameraDidChange
     }
 
     public boolean isReady() {
@@ -504,22 +474,20 @@ public class PageRecorderFrag extends PageBaseFrag implements
     }
 
     @Override
-    public void onMapReady(WSIMapView wsiMapView, int why) {
+    public void onMapReady(MapViewer mapViewer, int why) {
         if (why == MAP_STATE_READY) {
+            mapViewer.showRadar(false);
+            mapViewer.setTimeline(DateTime.now());
+
             if (markers == null) {
-                markers = new MapMarkers(requireContext(), wsiMapView.getWSIMap());
+                markers = new MapMarkers(requireContext(), mapViewer);
             }
 
             Location location = getCurrentLocation(requireActivity());
             if (location != null) {
                 binding.mapViewer.setCamera(new WLatLng(location.getLatitude(), location.getLongitude()), 13, true, 1.0f);
             }
+            refresh();
         }
-        refresh();
-    }
-
-    @Override
-    public void onCameraDidChange(boolean animated) {
-        //  refreshUi();  causes circular code loop.
     }
 }

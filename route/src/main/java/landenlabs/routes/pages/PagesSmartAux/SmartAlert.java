@@ -13,9 +13,6 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.weather.pangea.model.overlay.Icon;
-import com.wsi.mapsdk.utils.DrawUtils;
-
 import landenlabs.routes.R;
 import landenlabs.routes.data.ArrayListEx;
 import landenlabs.routes.data.GpsPoint;
@@ -74,10 +71,6 @@ public class SmartAlert {
             R.drawable.smart_snow,      // 5=snowy
             R.drawable.smart_ice        // 6=icy
     };
-    private static final Icon[] iconDDI7 = new Icon[7];
-    private static Icon iconError;
-    private static Icon iconNone;
-
     public static final String SIG_WARNING = "W";
     public static final String SIG_WATCH = "A";
     public static final String SIG_ADVISORY = "Y";
@@ -148,25 +141,6 @@ public class SmartAlert {
         } else {
             alert = null;
         }
-    }
-
-    public static void initIcons(@NonNull Context context) {
-        if (iconNone == null) {
-            iconNone = DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.smart_none, null);
-            iconError = DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.smart_error, null);
-            for (int idx = 0; idx < imageDDI7.length; idx++) {
-                iconDDI7[idx] = DrawUtils.getMarkerIconFromDrawableSized(context, imageDDI7[idx], null);
-            }
-        }
-    }
-
-    public Icon getIcon(@NonNull Context context) {
-        initIcons(context);
-        Icon icon = iconError;
-        if (hasValidLoc) {
-            icon = hasValidData ? iconDDI7[drivingDifficultyIndex] : iconNone;
-        }
-        return icon;
     }
 
     @DrawableRes

@@ -17,7 +17,7 @@ import landenlabs.routes.utils.UnitSpeed;
 import landenlabs.wx_lib_data.location.WLatLng;
 import landenlabs.wx_lib_data.location.WLatLngBounds;
 
-import com.weather.pangea.geom.Polyline;
+import com.weather.mapsdk.props.TWCMapLatLng;
 import com.wsi.wxdata.WxLocation;
 
 import org.joda.time.DateTime;
@@ -425,13 +425,13 @@ public class Track {
     }
 
     synchronized
-    public Polyline toPolyline() {
-        List<com.weather.pangea.geom.LatLng> polyPoints = new ArrayList<>();
+    public ArrayList<TWCMapLatLng> toLatLngList() {
+        ArrayList<TWCMapLatLng> polyPoints = new ArrayList<>(points.size());
         for (int idx = 0; idx < points.size(); idx++) {
             GpsPoint point = points.get(idx);
-            polyPoints.add(new com.weather.pangea.geom.LatLng(point.latitude, point.longitude));
+            polyPoints.add(new TWCMapLatLng(point.latitude, point.longitude));
         }
-        return new Polyline(polyPoints);
+        return polyPoints;
     }
 
     public String getKey() {

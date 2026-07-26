@@ -6,17 +6,18 @@
 package landenlabs.routes.map;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
-import com.wsi.mapsdk.map.WSIMap;
-import com.wsi.mapsdk.markers.WSIMarkerView;
-import com.wsi.mapsdk.markers.WSIMarkerViewOptions;
-import com.wsi.mapsdk.utils.DrawUtils;
+import com.weather.mapsdk.TWCMapView;
+import com.weather.mapsdk.props.TWCMapLatLng;
+import com.weather.mapsdk.props.TWCMapMarker;
 
 import landenlabs.routes.R;
 import landenlabs.wx_lib_data.location.WLatLng;
-
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,20 +30,21 @@ public class MapMarkers {
     public static final String START_MARKER = "Start";
     public static final String POS_MARKER = "Now";
     public static final String END_MARKER = "End";
-    private final Map<String, WSIMarkerView> markers = new HashMap<>();
-    private WSIMap map;
+    private final Map<String, TWCMapMarker> markers = new HashMap<>();
+    private TWCMapView map;
 
-    private final Map<String, com.weather.pangea.model.overlay.Icon> icons = new HashMap<>();
-    private final com.weather.pangea.model.overlay.Icon defIcon;
+    @DrawableRes
+    private final Map<String, Integer> iconRes = new HashMap<>();
+    @DrawableRes
+    private final int defIconRes;
 
-    public MapMarkers(@NonNull Context context, WSIMap map) {
+    public MapMarkers(@NonNull Context context, TWCMapView map) {
         this.map = map;
 
-        // DrawUtils.getMarkerIconFromDrawableSized(getContext(), markerRes, null);
-        icons.put(START_MARKER, DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.ic_map_pin_green, null));
-        icons.put(POS_MARKER, DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.ic_map_pin_drive, null));
-        icons.put(END_MARKER, DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.ic_map_pin_red, null));
-        defIcon = DrawUtils.getMarkerIconFromDrawableSized(context, R.drawable.ic_map_pin_def, null);
+        iconRes.put(START_MARKER, R.drawable.ic_map_pin_green);
+        iconRes.put(POS_MARKER, R.drawable.ic_map_pin_drive);
+        iconRes.put(END_MARKER, R.drawable.ic_map_pin_red);
+        defIconRes = R.drawable.ic_map_pin_def;
     }
 
     public static void done(MapMarkers mapMarkers) {
@@ -57,35 +59,32 @@ public class MapMarkers {
 
     synchronized
     public void clearMarkers() {
-        for (Map.Entry<String, WSIMarkerView> entry : markers.entrySet()) {
-            map.removeMarker(entry.getValue());
+        for (String key : markers.keySet()) {
+            map.removeImageMarker(key);
         }
         markers.clear();
     }
 
     synchronized
     public void clearMarker(String name) {
-        WSIMarkerView marker = markers.get(name);
-        if (marker != null) {
-            map.removeMarker(marker);
+        if (markers.remove(name) != null) {
+            map.removeImageMarker(name);
         }
-        markers.remove(name);
     }
 
     synchronized
-    public void addMarker(WLatLng location, String key) {
-        addMarker(location, key, icons.containsKey(key) ? icons.get(key) : defIcon);
+    public TWCMapMarker addMarker(WLatLng location, String key) {
+        int drawableRes = iconRes.containsKey(key) ? iconRes.get(key) : defIconRes;
+        return addMarker(location, key, drawableRes, 1f);
     }
+
     synchronized
-    public WSIMarkerView addMarker(WLatLng location, String key, com.weather.pangea.model.overlay.Icon icon) {
-        WSIMarkerView marker = markers.get(key);
-        if (marker != null) {
-            map.removeMarker(marker);
-        }
-        marker = map.addMarker(new WSIMarkerViewOptions()
-                .position(new com.wsi.mapsdk.utils.WLatLng(location.latitude, location.longitude))
-                .icon(icon)
-                .title(key));
+    public TWCMapMarker addMarker(WLatLng location, String key, @DrawableRes int drawableRes, float scale) {
+        Drawable drawable = ContextCompat.getDrawable(map.getContext(), drawableRes);
+        int widthPx = Math.max(1, Math.round((drawable != null ? drawable.getIntrinsicWidth() : 1) * scale));
+        int heightPx = Math.max(1, Math.round((drawable != null ? drawable.getIntrinsicHeight() : 1) * scale));
+        TWCMapMarker marker = map.addImageMarker(drawableRes, widthPx, heightPx, key,
+                new TWCMapLatLng(location.latitude, location.longitude));
         markers.put(key, marker);
         return marker;
     }

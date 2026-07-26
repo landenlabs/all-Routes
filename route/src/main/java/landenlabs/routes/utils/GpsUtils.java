@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.weather.pangea.geom.LatLng;
+import com.weather.mapsdk.props.TWCMapLatLng;
 
 import landenlabs.routes.data.GpsPoint;
 
@@ -125,7 +125,7 @@ public class GpsUtils {
     }
 
     @Nullable
-    public static WLatLng toWLatLng(@Nullable LatLng latLng) {
+    public static WLatLng toWLatLng(@Nullable TWCMapLatLng latLng) {
         if (latLng == null)
             return null;
         return new WLatLng(latLng.getLatitude(), latLng.getLongitude());

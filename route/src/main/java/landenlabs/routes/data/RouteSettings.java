@@ -15,10 +15,9 @@ import android.graphics.Color;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.location.Priority;
-import com.weather.pangea.model.overlay.StrokeStyle;
-import com.weather.pangea.model.overlay.StrokeStyleBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,12 +41,56 @@ public class RouteSettings {
     public static /* Priority */ int  gpsRequestPermission = Priority.PRIORITY_HIGH_ACCURACY;
     public static boolean unitEnglish = true;
 
+    /**
+     * Plain line style used with TWCMapView.addMarkerPolyline() (color/width/dash - no
+     * separate opacity param, so opacity must be baked into the alpha channel via argbColor()).
+     */
+    public static class LineStyle {
+        @ColorInt
+        private final int color;
+        private final float opacity;
+        private final double width;
+        @Nullable
+        private final List<Double> dashPattern;
+
+        public LineStyle(@ColorInt int color, float opacity, double width, @Nullable List<Double> dashPattern) {
+            this.color = color;
+            this.opacity = opacity;
+            this.width = width;
+            this.dashPattern = dashPattern;
+        }
+
+        @ColorInt
+        public int getColor() {
+            return color;
+        }
+
+        public float getOpacity() {
+            return opacity;
+        }
+
+        public double getWidth() {
+            return width;
+        }
+
+        @Nullable
+        public List<Double> getDashPattern() {
+            return dashPattern;
+        }
+
+        /** Packed ARGB color (opacity baked into the alpha channel) for addMarkerPolyline(). */
+        @ColorInt
+        public int argbColor() {
+            return Color.argb(Math.round(opacity * 255f), Color.red(color), Color.green(color), Color.blue(color));
+        }
+    }
+
     public static final int strokeWidth = 8;
-    public static final  List<Integer> dashPattern = Arrays.asList(strokeWidth*3, strokeWidth*2);
-    public static StrokeStyle lineStyleStd = new StrokeStyleBuilder().setColor(Color.RED).setOpacity(0.8f).setWidth(strokeWidth*2).build();
-    public static StrokeStyle lineStyleTest = new StrokeStyleBuilder().setColor(Color.BLUE).setOpacity(0.5f).setDashPattern(dashPattern).setWidth(strokeWidth).build();
-    public static StrokeStyle lineStyleRev = new StrokeStyleBuilder().setColor(Color.RED).setOpacity(0.5f).setDashPattern(dashPattern).setWidth(strokeWidth).build();
-    public static StrokeStyle gridStyleRev = new StrokeStyleBuilder().setColor(Color.BLACK).setOpacity(0.5f).setWidth(2).build();
+    public static final  List<Double> dashPattern = Arrays.asList((double) (strokeWidth*3), (double) (strokeWidth*2));
+    public static LineStyle lineStyleStd = new LineStyle(Color.RED, 0.8f, strokeWidth*2, null);
+    public static LineStyle lineStyleTest = new LineStyle(Color.BLUE, 0.5f, strokeWidth, dashPattern);
+    public static LineStyle lineStyleRev = new LineStyle(Color.RED, 0.5f, strokeWidth, dashPattern);
+    public static LineStyle gridStyleRev = new LineStyle(Color.BLACK, 0.5f, 2, null);
 
     /*
      * Latitude/Longitude accuracy
@@ -84,9 +127,9 @@ public class RouteSettings {
         int testClr = pref.getInt(PREF_TEST_CLR, lineStyleTest.getColor());
         int revClr = pref.getInt(PREF_REV_CLR, lineStyleRev.getColor());
 
-        lineStyleRev = new StrokeStyleBuilder().setColor(revClr).setOpacity(0.5f).setDashPattern(dashPattern).setWidth(strokeWidth).build();
-        lineStyleTest = new StrokeStyleBuilder().setColor(testClr).setOpacity(0.5f).setDashPattern(dashPattern).setWidth(strokeWidth).build();
-        lineStyleStd = new StrokeStyleBuilder().setColor(trackClr).setOpacity(0.8f).setWidth(strokeWidth*2).build();
+        lineStyleRev = new LineStyle(revClr, 0.5f, strokeWidth, dashPattern);
+        lineStyleTest = new LineStyle(testClr, 0.5f, strokeWidth, dashPattern);
+        lineStyleStd = new LineStyle(trackClr, 0.8f, strokeWidth*2, null);
     }
 
     public static void save(@NonNull Context context) {
@@ -102,7 +145,7 @@ public class RouteSettings {
                 .apply();
     }
 
-    public static StrokeStyle makeStroke(@ColorInt int color, float widthMult) {
-        return new StrokeStyleBuilder().setColor(color).setOpacity(0.8f).setWidth(strokeWidth * widthMult).build();
+    public static LineStyle makeStroke(@ColorInt int color, float widthMult) {
+        return new LineStyle(color, 0.8f, strokeWidth * widthMult, null);
     }
 }

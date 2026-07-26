@@ -10,18 +10,11 @@ import android.util.SparseArray;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import com.weather.pangea.geom.LatLng;
-import com.weather.pangea.geom.Polygon;
-import com.weather.pangea.geom.Polyline;
-import com.weather.pangea.model.overlay.FillStyle;
-import com.weather.pangea.model.overlay.FillStyleBuilder;
-import com.weather.pangea.model.overlay.Overlay;
-import com.weather.pangea.model.overlay.PolygonPathBuilder;
-import com.weather.pangea.model.overlay.PolylinePathBuilder;
-import com.weather.pangea.model.overlay.StrokeStyle;
+import com.weather.mapsdk.props.TWCMapLatLng;
 
 import landenlabs.routes.data.LiveQueue;
 import landenlabs.routes.data.RouteSettings;
+import landenlabs.routes.data.RouteSettings.LineStyle;
 import landenlabs.routes.data.Track;
 import landenlabs.routes.data.TrackGrid;
 import landenlabs.routes.data.TrackIdList;
@@ -29,8 +22,8 @@ import landenlabs.routes.utils.GpsUtils;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import landenlabs.wx_lib_data.location.WLatLngBounds;
 import landenlabs.wx_lib_data.logger.ALog;
@@ -43,7 +36,12 @@ public class MapTracks {
     private  MapViewer mapViewer;
     private  TrackGrid trackGrid;
     private final LiveQueue<Track> liveFullTracks;
-    private final HashMap<String, Overlay> mapOverlays = new HashMap<>();
+
+    // Track polylines persist (keyed by Track.getKey()) so multiple selected tracks can coexist.
+    private final Set<String> trackPolylineIds = new HashSet<>();
+    // Debug (grid/bounds/cells) overlays are fully rebuilt on every observeTracks() call.
+    private final Set<String> debugPolylineIds = new HashSet<>();
+    private final Set<String> debugPolygonIds = new HashSet<>();
     private WLatLngBounds bounds = null;
 
     public static boolean  showBounds = false;
@@ -63,7 +61,6 @@ public class MapTracks {
         this.mapViewer = mapViewer;
         this.trackGrid = trackGrid;
         this.liveFullTracks = new LiveQueue<>();
-        mapViewer.getTopLayer().clearOverlays();
         liveFullTracks.observe(owner, this::observeTracks);
     }
 
@@ -75,58 +72,72 @@ public class MapTracks {
     public void done() {
         ALog.d.tagMsg(this, "MapTracks done");
         liveFullTracks.clear();
+        clearTrackPolylines();
+        clearDebugOverlays();
         mapViewer = null;
         trackGrid = null;
         bounds = null;
-        mapOverlays.clear();
+    }
+
+    private void clearTrackPolylines() {
+        if (mapViewer != null) {
+            for (String id : trackPolylineIds) {
+                mapViewer.removeMarkerPolyline(id);
+            }
+        }
+        trackPolylineIds.clear();
+    }
+
+    private void clearDebugOverlays() {
+        if (mapViewer != null) {
+            for (String id : debugPolylineIds) {
+                mapViewer.removeMarkerPolyline(id);
+            }
+            for (String id : debugPolygonIds) {
+                mapViewer.removeMarkerPolygon(id);
+            }
+        }
+        debugPolylineIds.clear();
+        debugPolygonIds.clear();
     }
 
     public void addTrack(Track track) {
-        Overlay existingOverlay = null; // mapOverlays.get(track.getKey());
-        if (existingOverlay == null) {
-            trackGrid.getTrackAsync(track.id, track).whenComplete((fullTrack, exception) -> {
-                if (exception == null && fullTrack != null) {
-                    liveFullTracks.postValue(fullTrack);
-                }
-            });
-        } else {
-            addOverlay(existingOverlay);
-        }
+        trackGrid.getTrackAsync(track.id, track).whenComplete((fullTrack, exception) -> {
+            if (exception == null && fullTrack != null) {
+                liveFullTracks.postValue(fullTrack);
+            }
+        });
     }
 
-    private void addOverlay(Overlay newOverlay) {
-        mapViewer.getTopLayer().addOverlay(newOverlay);
-        // mapViewer.post(() -> mapViewer.getTopLayer().addOverlay(newOverlay));
+    private void addPolyline(String id, ArrayList<TWCMapLatLng> points, LineStyle style, Set<String> idSet) {
+        mapViewer.addMarkerPolyline(id, points, style.argbColor(), style.getWidth(), style.getDashPattern());
+        idSet.add(id);
+    }
+
+    private void addPolygon(String id, ArrayList<TWCMapLatLng> points, int fillColor, double fillOpacity, Set<String> idSet) {
+        mapViewer.addMarkerPolygon(id, points, fillColor, fillOpacity, fillColor, 0);
+        idSet.add(id);
     }
 
     public void observeTracks(Track fullTrack) {
         if (mapViewer == null || !mapViewer.isReady()) {
             return;
         }
-        
-        mapViewer.getTopLayer().clearOverlays();
-        for (Overlay overlay : mapOverlays.values()) {
-            addOverlay(overlay);
-        }
 
-        // fullTrack.count = -1;
         bounds = GpsUtils.union(bounds, fullTrack.getBounds());
         bounds = GpsUtils.minBounds(bounds, RouteSettings.minBoundsDeg);
-        mapViewer.setCameraBounds(bounds, 1000);
+        mapViewer.setCameraBounds(bounds);
+
+        clearDebugOverlays();
 
         if (true) {
             // Draw track path.
-            StrokeStyle lineStyle = RouteSettings.lineStyleStd;
+            LineStyle lineStyle = RouteSettings.lineStyleStd;
             if (fullTrack.name.contains(Track.NAME_REV))
                 lineStyle = RouteSettings.lineStyleRev;
             else if (fullTrack.name.contains(Track.NAME_TEST))
                 lineStyle = RouteSettings.lineStyleTest;
-            Overlay newOverlay = new PolylinePathBuilder()
-                    .setPolyLine(fullTrack.toPolyline())
-                    .setStrokeStyle(lineStyle)
-                    .build();
-            mapOverlays.put(fullTrack.getKey(), newOverlay);
-            addOverlay(newOverlay);
+            addPolyline(fullTrack.getKey(), fullTrack.toLatLngList(), lineStyle, trackPolylineIds);
         }
 
         float step = 1f / TrackGrid.scale1;
@@ -136,51 +147,39 @@ public class MapTracks {
             float maxLat = TrackGrid.truncate(bounds.northeast.latitude) + step;
             float minLng = TrackGrid.truncate(bounds.southwest.longitude) - step;
             float maxLng = TrackGrid.truncate(bounds.northeast.longitude) + step;
+            int gridIdx = 0;
             for (float lat = minLat; lat <= maxLat; lat += step) {
-                ArrayList<LatLng> polyline = new ArrayList<>((int) ((maxLng - minLng) / step) + 1);
+                ArrayList<TWCMapLatLng> polyline = new ArrayList<>((int) ((maxLng - minLng) / step) + 1);
                 for (float lng = minLng; lng <= maxLng; lng += step) {
-                    polyline.add(new LatLng(lat, lng));
+                    polyline.add(new TWCMapLatLng(lat, lng));
                 }
-                addOverlay(new PolylinePathBuilder()
-                        .setPolyLine(new Polyline(polyline))
-                        .setStrokeStyle(RouteSettings.gridStyleRev)
-                        .build());
+                addPolyline("gridH" + (gridIdx++), polyline, RouteSettings.gridStyleRev, debugPolylineIds);
             }
             for (float lng = minLng; lng <= maxLng; lng += step) {
-                ArrayList<LatLng> polyline = new ArrayList<>((int) ((maxLng - minLng) / step) + 1);
+                ArrayList<TWCMapLatLng> polyline = new ArrayList<>((int) ((maxLng - minLng) / step) + 1);
                 for (float lat = minLat; lat <= maxLat; lat += step) {
-                    polyline.add(new LatLng(lat, lng));
+                    polyline.add(new TWCMapLatLng(lat, lng));
                 }
-                addOverlay(new PolylinePathBuilder()
-                        .setPolyLine(new Polyline(polyline))
-                        .setStrokeStyle(RouteSettings.gridStyleRev)
-                        .build());
+                addPolyline("gridV" + (gridIdx++), polyline, RouteSettings.gridStyleRev, debugPolylineIds);
             }
         }
 
         if (showBounds && bounds != null) {
             // Draw bounding box.
-            ArrayList<Polyline> polylines = new ArrayList<>(1);
-            LatLng southEast = new LatLng(bounds.northeast.latitude, bounds.southwest.longitude);
-            LatLng northWest = new LatLng(bounds.southwest.latitude, bounds.northeast.longitude);
+            ArrayList<TWCMapLatLng> box = new ArrayList<>(5);
+            TWCMapLatLng southEast = new TWCMapLatLng(bounds.northeast.latitude, bounds.southwest.longitude);
+            TWCMapLatLng northWest = new TWCMapLatLng(bounds.southwest.latitude, bounds.northeast.longitude);
+            box.add(northWest);
+            box.add(new TWCMapLatLng(bounds.northeast.latitude, bounds.northeast.longitude));
+            box.add(southEast);
+            box.add(new TWCMapLatLng(bounds.southwest.latitude, bounds.southwest.longitude));
+            box.add(northWest);
 
-            polylines.add(new Polyline(Arrays.asList(
-                    northWest,
-                    new LatLng(bounds.northeast.latitude, bounds.northeast.longitude),
-                    southEast,
-                    new LatLng(bounds.southwest.latitude, bounds.southwest.longitude),
-                    northWest)));
-
-            FillStyle bndsStyle = new FillStyleBuilder().setColor(Color.RED).setOpacity(0.3f).build();
-            addOverlay(new PolygonPathBuilder()
-                    .setPolygon(new Polygon(polylines))
-                    .setFillStyle(bndsStyle)
-                    .build());
+            addPolygon("bounds", box, Color.RED, 0.3, debugPolygonIds);
         }
 
         if (showCells && bounds != null) {
             // Draw grid cells
-            FillStyle boxStyle = new FillStyleBuilder().setColor(Color.GREEN).setOpacity(0.3f).build();
             for (int latIdx = 0; latIdx < trackGrid.grid.size(); latIdx++) {
                 int latBoxI = trackGrid.grid.keyAt(latIdx);
                 float latBoxF = latBoxI / (float) TrackGrid.scale3 - 90f;
@@ -190,19 +189,14 @@ public class MapTracks {
                     int lngBoxI = lngArray.keyAt(lngIdx);
                     float lngBoxF = lngBoxI / (float) TrackGrid.scale3 - 180f;
 
-                    ArrayList<Polyline> boxlines = new ArrayList<>(1);
-                    boxlines.add(new Polyline(Arrays.asList(
-                            new LatLng(latBoxF, lngBoxF),
-                            new LatLng(latBoxF + step, lngBoxF),
-                            new LatLng(latBoxF + step, lngBoxF + step),
-                            new LatLng(latBoxF, lngBoxF + step),
-                            new LatLng(latBoxF, lngBoxF)
-                    )));
+                    ArrayList<TWCMapLatLng> cell = new ArrayList<>(5);
+                    cell.add(new TWCMapLatLng(latBoxF, lngBoxF));
+                    cell.add(new TWCMapLatLng(latBoxF + step, lngBoxF));
+                    cell.add(new TWCMapLatLng(latBoxF + step, lngBoxF + step));
+                    cell.add(new TWCMapLatLng(latBoxF, lngBoxF + step));
+                    cell.add(new TWCMapLatLng(latBoxF, lngBoxF));
 
-                    addOverlay(new PolygonPathBuilder()
-                            .setPolygon(new Polygon(boxlines))
-                            .setFillStyle(boxStyle)
-                            .build());
+                    addPolygon("cell" + latBoxI + "_" + lngBoxI, cell, Color.GREEN, 0.3, debugPolygonIds);
                 }
             }
         }
