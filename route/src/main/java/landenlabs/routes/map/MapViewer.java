@@ -21,12 +21,35 @@ import android.widget.Toast;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.helper.widget.Layer;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleObserver;
 
 import com.google.common.eventbus.Subscribe;
-import com.wsi.wxdata.ObjUtils;
+import com.weather.pangea.event.MapLongTouchEvent;
+import com.weather.pangea.layer.Layer;
+import com.weather.pangea.layer.overlay.SimpleOverlayLayer;
+import com.wsi.mapsdk.InventoryOverlay;
+import com.wsi.mapsdk.log.MLog;
+import com.wsi.mapsdk.map.OnWSIMapViewReadyCallback;
+import com.wsi.mapsdk.map.WSIMap;
+import com.wsi.mapsdk.map.WSIMapCalloutInfoList;
+import com.wsi.mapsdk.map.WSIMapDelegate;
+import com.wsi.mapsdk.map.WSIMapGeoOverlay;
+import com.wsi.mapsdk.map.WSIMapOptions;
+import com.wsi.mapsdk.map.WSIMapRasterLayer;
+import com.wsi.mapsdk.map.WSIMapRasterLayerDataDisplayMode;
+import com.wsi.mapsdk.map.WSIMapRasterLayerTimeDisplayMode;
+import com.wsi.mapsdk.map.WSIMapSelectMode;
+import com.wsi.mapsdk.map.WSIMapType;
+import com.wsi.mapsdk.map.WSIMapView;
+import com.wsi.mapsdk.map.WSIMapView.WSIMapViewController;
+import com.wsi.mapsdk.map.WSIMapViewDelegate;
+import com.wsi.mapsdk.map.WSIRasterLayerLoopTimes;
+import com.wsi.mapsdk.markers.WSIMarkerView;
+import com.wsi.mapsdk.markers.WSIMarkerViewOptions;
+import com.wsi.mapsdk.utils.DrawUtils;
+import com.wsi.mapsdk.utils.ObjUtils;
+import com.wsi.mapsdk.utils.WCameraPosition;
 
 import landenlabs.routes.R;
 import landenlabs.routes.logger.AppLog;
@@ -88,6 +111,26 @@ public class MapViewer extends WSIMapView
     private boolean doReadyOnce = true;
 
 
+
+    // ---------------------------------------------------------------------------------------------
+    // Conversions between our WLatLng and the MapSDK/Pangea LatLng types.
+    private static WLatLng toWLatLng(com.weather.pangea.geom.LatLng ll) {
+        return new WLatLng(ll.getLatitude(), ll.getLongitude());
+    }
+
+    private static WLatLng toWLatLng(com.wsi.mapsdk.utils.WLatLng ll) {
+        return new WLatLng(ll.getLatitude(), ll.getLongitude());
+    }
+
+    private static com.wsi.mapsdk.utils.WLatLng toMapsdkLatLng(WLatLng ll) {
+        return new com.wsi.mapsdk.utils.WLatLng(ll.latitude, ll.longitude);
+    }
+
+    private static com.wsi.mapsdk.utils.WLatLngBounds toMapsdkBounds(WLatLngBounds bounds) {
+        return new com.wsi.mapsdk.utils.WLatLngBounds(
+                new com.weather.pangea.geom.LatLng(bounds.northeast.latitude, bounds.northeast.longitude),
+                new com.weather.pangea.geom.LatLng(bounds.southwest.latitude, bounds.southwest.longitude));
+    }
 
     // ---------------------------------------------------------------------------------------------
     // 3. Construct view
@@ -173,7 +216,7 @@ public class MapViewer extends WSIMapView
         if (mapViewer == null) {
             return " Map NULL";
         } else if (mapViewer.isReady()) {
-            return msg + " Map camera=" + new WLatLng(mapViewer.getWSIMap().getCameraPosition().getTarget());
+            return msg + " Map camera=" + toWLatLng(mapViewer.getWSIMap().getCameraPosition().getTarget());
         } else {
             return msg + " Map NOT ready";
         }
@@ -380,7 +423,7 @@ public class MapViewer extends WSIMapView
      */
     private void saveMapViewState() {
         if (this.isReady()) {
-            WLatLng latlng = WCameraPosition.getTarget(this.getWSIMap().getCameraPosition());
+            WLatLng latlng = toWLatLng(WCameraPosition.getTarget(this.getWSIMap().getCameraPosition()));
             double zoom = this.getWSIMap().getCameraPosition().getZoom();
             String activeRasterId = (this.getWSIMap().getActiveRasterLayer() != null) ?
                     this.getWSIMap().getActiveRasterLayer().getName() : "";
@@ -417,18 +460,18 @@ public class MapViewer extends WSIMapView
             WSIMap wsiMap = this.getWSIMap();
 
             // Foce map camera to specific location on startup and rotation if not already set.
-            WLatLng cameraPos = WCameraPosition.getTarget(wsiMap.getCameraPosition());
+            WLatLng cameraPos = toWLatLng(WCameraPosition.getTarget(wsiMap.getCameraPosition()));
             if (MapUtils.isSimilar(ZERO_POS, cameraPos)) {
                 WLatLng oldPos = new WLatLng(
                         ObjUtils.getPref(pref, PREF_CAMERA_LAT, 0f),
                         ObjUtils.getPref(pref, PREF_CAMERA_LNG, 0f));
                 float oldZoom = ObjUtils.getPref(pref, PREF_CAMERA_ZOOM, 0f);
                 if (MapUtils.isSimilar(oldPos, ZERO_POS)
-                        && !MapUtils.isSimilar(START_POS, WCameraPosition.getTarget(wsiMap.getCameraPosition()))) {
+                        && !MapUtils.isSimilar(START_POS, toWLatLng(WCameraPosition.getTarget(wsiMap.getCameraPosition())))) {
                     oldPos = START_POS;
                     oldZoom = START_ZOOM;
                 }
-                wsiMap.moveCamera(WCameraPosition.newLatLngZoom(oldPos, oldZoom));
+                wsiMap.moveCamera(WCameraPosition.newLatLngZoom(toMapsdkLatLng(oldPos), oldZoom));
             }
 
             setMapType(mapType);
@@ -466,7 +509,7 @@ public class MapViewer extends WSIMapView
                 wsiMap.removeMarker(pinMarker);
             }
             pinMarker = wsiMap.addMarker(new WSIMarkerViewOptions()
-                    .position(cameraPos)
+                    .position(toMapsdkLatLng(cameraPos))
                     .icon(icon));
             pinMarker.setScaleFactor(markerScale);
             pinMarkers.put(markerRes, pinMarker);
@@ -519,14 +562,14 @@ public class MapViewer extends WSIMapView
     }
 
     public void setCameraBounds(@NonNull WLatLngBounds bounds, int durationMs) {
-        getWSIMap().animateCamera(bounds, durationMs);
+        getWSIMap().animateCamera(toMapsdkBounds(bounds), durationMs);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public boolean setCamera(@NonNull WLatLng cameraPos, float zoomLevel, boolean isGpsMarker, float iconScale) {
         if (!MapUtils.isSimilar(ZERO_POS, cameraPos)) {
             if (zoomLevel == -1) zoomLevel = (float)getWSIMap().getCameraPosition().getZoom();
-            getWSIMap().moveCamera(WCameraPosition.newLatLngZoom(cameraPos, zoomLevel));
+            getWSIMap().moveCamera(WCameraPosition.newLatLngZoom(toMapsdkLatLng(cameraPos), zoomLevel));
             moveMarker(cameraPos, isGpsMarker ? GPS_MARKER : CITY_MARKER, iconScale);
 
             if (pref != null) {

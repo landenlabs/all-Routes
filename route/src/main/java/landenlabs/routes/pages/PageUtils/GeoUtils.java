@@ -9,6 +9,8 @@ import android.content.Context;
 import android.location.Geocoder;
 import android.view.View;
 
+import com.wsi.mapsdk.map.WSIMap;
+
 import java.util.Locale;
 
 /**

@@ -7,7 +7,7 @@ plugins {
 
     // Add the dependency for the Google services Gradle plugin
     // Parse google-services.json for accounts
-    id 'com.google.gms.google-services' version '4.4.4'
+    id 'com.google.gms.google-services' version '4.5.0'
     id 'com.google.firebase.crashlytics' version '3.0.7'
     // https://firebase.google.com/docs/perf-mon/console?platform=android&authuser=0
     id("com.google.firebase.firebase-perf") version "2.0.2"
@@ -149,37 +149,37 @@ dependencies {
 
     implementation 'androidx.annotation:annotation:1.10.0'   // 1.6.0 causes Kotlin duplicate issues.
     implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'androidx.lifecycle:lifecycle-process:2.10.0'
+    implementation 'androidx.lifecycle:lifecycle-process:2.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'com.google.android.material:material:1.14.0'
 
-    implementation "com.google.android.gms:play-services-location:21.3.0"
+    implementation "com.google.android.gms:play-services-location:21.4.0"
     implementation 'androidx.work:work-runtime:2.11.2'
     // https://developer.android.com/jetpack/androidx/releases/work
-    implementation 'androidx.sqlite:sqlite:2.6.2'
+    implementation 'androidx.sqlite:sqlite:2.7.0'
     // https://developer.android.com/jetpack/androidx/releases/sqlite
-    implementation 'net.danlew:android.joda:2.14.1'
+    implementation 'net.danlew:android.joda:2.14.2.1'
     implementation project(path: ':lib_data')
     // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
 
-    /*
+
     // implementation "com.wsi.mapsdk:mapsdk:$versions.mapSdkV1"
     // https://android-repo.media.weather.com/MobileMapSDK/Maven/com/
     // implementation(name: 'mapsdk', ext: 'aar')
     // implementation files('libs/mapsdk.aar')
-    api(name: "mapsdk", ext: 'aar', version: "$versions.mapSdkV1",  group: 'mapsdk')
+    // api("mapsdk:mapsdk:$versions.mapSdkV1@aar")
     // Using Maven repo Pangea
     api("com.weather.pangea.android:pangeamapbox:$versions.pangea4")
-    */
+
     implementation 'androidx.security:security-crypto:1.1.0'
 
-    def navVer = "2.9.7"
+    def navVer = "2.9.8"
     implementation "androidx.navigation:navigation-fragment:$navVer"
     implementation "androidx.navigation:navigation-ui:$navVer"
 
     // https://firebase.google.com/docs/android/android-play-services?authuser=0&hl=en
     // Import the Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:34.12.0')
+    implementation platform('com.google.firebase:firebase-bom:34.16.0')
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -196,7 +196,7 @@ dependencies {
     testImplementation 'androidx.test:core:1.7.0'
     testImplementation 'org.assertj:assertj-core:3.27.7'
     testImplementation 'org.robolectric:robolectric:4.16.1'
-    testImplementation 'joda-time:joda-time:2.14.1'
+    testImplementation 'joda-time:joda-time:2.14.2'
     testImplementation project(path: ':lib_gpx')
 
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'

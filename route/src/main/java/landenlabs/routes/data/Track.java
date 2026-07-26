@@ -17,6 +17,7 @@ import landenlabs.routes.utils.UnitSpeed;
 import landenlabs.wx_lib_data.location.WLatLng;
 import landenlabs.wx_lib_data.location.WLatLngBounds;
 
+import com.weather.pangea.geom.Polyline;
 import com.wsi.wxdata.WxLocation;
 
 import org.joda.time.DateTime;

@@ -27,6 +27,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.weather.pangea.event.MapLongTouchEvent;
+import com.wsi.mapsdk.map.WSIMapType;
+import com.wsi.mapsdk.map.WSIMapView;
+
 import landenlabs.routes.R;
 import landenlabs.routes.data.ArrayListEx;
 import landenlabs.routes.data.GpsPoint;

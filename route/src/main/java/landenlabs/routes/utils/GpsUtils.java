@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.type.LatLng;
+import com.weather.pangea.geom.LatLng;
 
 import landenlabs.routes.data.GpsPoint;
 

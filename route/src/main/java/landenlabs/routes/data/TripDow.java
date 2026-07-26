@@ -5,6 +5,7 @@
 
 package landenlabs.routes.data;
 
+import landenlabs.wx_lib_data.location.WLatLngBounds;
 
 import org.joda.time.DateTime;
 

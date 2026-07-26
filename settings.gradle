@@ -33,6 +33,7 @@ dependencyResolutionManagement {
             name = 'weatherRepo'
             url = 'https://android-repo.media.weather.com/MobileMapSDK/Maven'
         }
+         */
 
         // Provide Pangea files required for map tiles.
         maven {
@@ -44,7 +45,6 @@ dependencyResolutionManagement {
             }
             url = "https://repo.artifacts.weather.com/artifactory/pangea-mobile-kotlin-local"
         }
-         */
     }
 }
 rootProject.name = "all-Routes"

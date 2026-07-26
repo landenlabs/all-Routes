@@ -10,7 +10,15 @@ import android.util.SparseArray;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import com.google.type.LatLng;
+import com.weather.pangea.geom.LatLng;
+import com.weather.pangea.geom.Polygon;
+import com.weather.pangea.geom.Polyline;
+import com.weather.pangea.model.overlay.FillStyle;
+import com.weather.pangea.model.overlay.FillStyleBuilder;
+import com.weather.pangea.model.overlay.Overlay;
+import com.weather.pangea.model.overlay.PolygonPathBuilder;
+import com.weather.pangea.model.overlay.PolylinePathBuilder;
+import com.weather.pangea.model.overlay.StrokeStyle;
 
 import landenlabs.routes.data.LiveQueue;
 import landenlabs.routes.data.RouteSettings;
@@ -158,9 +166,9 @@ public class MapTracks {
 
             polylines.add(new Polyline(Arrays.asList(
                     northWest,
-                    bounds.northeast.toPangeaLL(),
+                    new LatLng(bounds.northeast.latitude, bounds.northeast.longitude),
                     southEast,
-                    bounds.southwest.toPangeaLL(),
+                    new LatLng(bounds.southwest.latitude, bounds.southwest.longitude),
                     northWest)));
 
             FillStyle bndsStyle = new FillStyleBuilder().setColor(Color.RED).setOpacity(0.3f).build();

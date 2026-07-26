@@ -33,6 +33,14 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.weather.pangea.event.MapLongTouchEvent;
+import com.weather.pangea.model.overlay.Overlay;
+import com.weather.pangea.model.overlay.PolylinePathBuilder;
+import com.wsi.mapsdk.map.WSIMapSelectMode;
+import com.wsi.mapsdk.map.WSIMapType;
+import com.wsi.mapsdk.map.WSIMapView;
+
 import landenlabs.routes.R;
 import landenlabs.routes.Record.RecordService;
 import landenlabs.routes.data.ArrayListEx;
@@ -415,7 +423,8 @@ public class PageWeatherFrag extends PageBaseFrag implements
     @Override
     public void onLongTouch(MapViewer mapViewer, MapLongTouchEvent event) {
         clearAll();
-        WLatLng latLng = new WLatLng(event.getCenterLatLng());
+        com.weather.pangea.geom.LatLng centerLatLng = event.getCenterLatLng();
+        WLatLng latLng = new WLatLng(centerLatLng.getLatitude(), centerLatLng.getLongitude());
         String locStr = String.format(Locale.US, "%.3f,%.3f", latLng.getLatitude(), latLng.getLongitude());
         // Toast.makeText(binding.mapViewer.getContext(), locStr, Toast.LENGTH_SHORT).show();
         ClipboardManager clipboard = (ClipboardManager) binding.mapViewer.getContext().getSystemService(Context.CLIPBOARD_SERVICE);

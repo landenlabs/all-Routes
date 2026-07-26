@@ -9,7 +9,13 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.wsi.mapsdk.map.WSIMap;
+import com.wsi.mapsdk.markers.WSIMarkerView;
+import com.wsi.mapsdk.markers.WSIMarkerViewOptions;
+import com.wsi.mapsdk.utils.DrawUtils;
+
 import landenlabs.routes.R;
+import landenlabs.wx_lib_data.location.WLatLng;
 
 
 import java.util.HashMap;
@@ -77,7 +83,7 @@ public class MapMarkers {
             map.removeMarker(marker);
         }
         marker = map.addMarker(new WSIMarkerViewOptions()
-                .position(location)
+                .position(new com.wsi.mapsdk.utils.WLatLng(location.latitude, location.longitude))
                 .icon(icon)
                 .title(key));
         markers.put(key, marker);
