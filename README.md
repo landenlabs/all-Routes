@@ -1,5 +1,5 @@
 # all-route (EXPERIMENT - NOT DONE YET)
-<br>18-Arp-2026
+<br>18-Apr-2026
 <br>API 36 AndroidX Java
 <br>[Home website](https://landenlabs.com/android/index.html)
 
@@ -49,13 +49,13 @@ To build/run, you need:
 ---
 
 
-### Routes Page - List and manipulate reecorded tracks/routes/trips
+### Routes Page - List and manipulate recorded tracks/routes/trips
 <img src="screens/route-routes.png" width="50%" />
 
 ---
 
 
-### Record Page - record current GPS actitivity to create a track.
+### Record Page - record current GPS activity to create a track.
 <img src="screens/route-records.png" width="50%" />
 
 ---
@@ -65,3 +65,21 @@ To build/run, you need:
 <img src="screens/route-dev.png" width="50%" />
 
 ---
+
+### License
+
+```
+Copyright 2026 Dennis Lang (LanDen Labs)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+See [LICENSE](LICENSE) for the full license text.

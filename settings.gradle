@@ -51,3 +51,4 @@ rootProject.name = "all-Routes"
 include ':route'
 include ':lib_gpx'
 include ':lib_data'
+include ':lib_wxdata'

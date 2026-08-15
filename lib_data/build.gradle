@@ -36,7 +36,7 @@ dependencies {
         api "com.wsi.wxdata:wxdata:$versions.wxDataVersion"
         // api(name: 'wxdata', ext: 'aar', version: '$versions.wxDataVersion')
     } else {
-        api rootProject.files("libs/wxdata-${versions.wxDataVersion}.aar")
+        api project(':lib_wxdata')
 
         // https://square.github.io/okhttp/changelog/
         // https://github.com/square/okhttp/releases
