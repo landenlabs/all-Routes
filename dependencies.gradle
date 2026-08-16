@@ -21,14 +21,7 @@ ext.versions = [
     okHttp3         : '5.3.2',      // https://square.github.io/okhttp/changelog/ (synced with Pangea)
 
     appVersion      : appVersion,
-    appVernCode     : appVernCode,   
-    sdkVersion      : appVersion,
-    sdkVernCode     : appVernCode,
-
-    appcompat       : "1.7.1",      // https://developer.android.com/jetpack/androidx/releases/appcompat
-    material        : "1.13.0",
-    annotation      : "1.9.1",
-    work            : "2.11.2",      // https://androidx.tech/artifacts/work/work-runtime/
+    appVernCode     : appVernCode,
 ]
 
 // Limit languages to following list. Also look at 'resConfig' and 'resourceConfigurations'
@@ -45,6 +38,5 @@ if (propFile.exists()) {
 }
 
 ext.releasekeyfile = "${project.rootDir}/assets/sign/${twc_sign_props.RELEASE_KEY_STORE_FILE ?: 'release.keystore'}"
-ext.debugkeyfile = "${project.rootDir}/assets/sign/twc_debug.jks"
 
 

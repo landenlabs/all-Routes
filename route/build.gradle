@@ -156,16 +156,11 @@ dependencies {
     }
 
     implementation 'androidx.annotation:annotation:1.10.0'   // 1.6.0 causes Kotlin duplicate issues.
-    implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'androidx.lifecycle:lifecycle-process:2.11.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
     implementation 'com.google.android.material:material:1.14.0'
 
     implementation "com.google.android.gms:play-services-location:21.4.0"
-    implementation 'androidx.work:work-runtime:2.11.2'
-    // https://developer.android.com/jetpack/androidx/releases/work
-    implementation 'androidx.sqlite:sqlite:2.7.0'
-    // https://developer.android.com/jetpack/androidx/releases/sqlite
     implementation 'net.danlew:android.joda:2.14.2.1'
     implementation project(path: ':lib_data')
     // https://github.com/dlew/joda-time-android/blob/main/CHANGELOG.md
@@ -191,7 +186,7 @@ dependencies {
 
     // https://firebase.google.com/docs/android/android-play-services?authuser=0&hl=en
     // Import the Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:34.16.0')
+    implementation platform('com.google.firebase:firebase-bom:34.17.0')
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
@@ -206,13 +201,11 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.test:core:1.7.0'
-    testImplementation 'org.assertj:assertj-core:3.27.7'
     testImplementation 'org.robolectric:robolectric:4.16.1'
-    testImplementation 'joda-time:joda-time:2.14.2'
+    testImplementation 'joda-time:joda-time:2.14.3'
     testImplementation project(path: ':lib_gpx')
 
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
     androidTestImplementation project(path: ':lib_gpx')
 
     // https://square.github.io/leakcanary/getting_started/

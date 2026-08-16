@@ -12,7 +12,6 @@ buildscript {
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.jetbrains.kotlin.android) apply false
 }
 
 tasks.register('clean', Delete) {
@@ -26,15 +25,6 @@ subprojects {
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
-                }
-
-                // In AGP 9.0+, Kotlin support is built-in and detected via source sets.
-                // We can configure kotlinOptions if the plugin was applied or if it's a Kotlin project.
-                try {
-                    kotlinOptions {
-                        jvmTarget = "17"
-                    }
-                } catch (Exception ignored) {
                 }
             }
         }
